@@ -57,12 +57,17 @@ export function DealerRowActions({ dealer }: { dealer: DealerFormValues }) {
             </Button>
           }
         />
+        {/*
+          onClick, not onSelect: Base UI's Menu.Item has no onSelect (that is Radix's
+          name for it). React accepts `onSelect` as a DOM text-selection handler, so
+          TypeScript stays quiet and the item silently does nothing when clicked.
+        */}
         <DropdownMenuContent align="end">
-          <DropdownMenuItem onSelect={() => setEditOpen(true)}>
+          <DropdownMenuItem onClick={() => setEditOpen(true)}>
             <Pencil className="size-3.5" aria-hidden />
             Edit details
           </DropdownMenuItem>
-          <DropdownMenuItem variant="destructive" onSelect={() => setDeleteOpen(true)}>
+          <DropdownMenuItem variant="destructive" onClick={() => setDeleteOpen(true)}>
             <Trash2 className="size-3.5" aria-hidden />
             Delete dealer
           </DropdownMenuItem>
