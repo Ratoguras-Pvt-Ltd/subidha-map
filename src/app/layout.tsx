@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 
 import { ThemeProvider } from "@/components/theme-provider";
@@ -39,6 +39,23 @@ export const metadata: Metadata = {
     locale: "en_NP",
   },
   twitter: { card: "summary_large_image" },
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  // The public shell is `fixed inset-0`. Without viewport-fit=cover iOS letterboxes the
+  // safe areas and every env(safe-area-inset-*) resolves to 0 — the dealer sheet's
+  // bottom padding would silently do nothing.
+  viewportFit: "cover",
+  // Chrome's default, stated because Safari's is not: the keyboard must shrink the
+  // layout viewport. With resizes-visual the sheet keeps its full height and the
+  // dealer list ends up behind the keyboard.
+  interactiveWidget: "resizes-content",
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#ffffff" },
+    { media: "(prefers-color-scheme: dark)", color: "#0a0a0a" },
+  ],
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {

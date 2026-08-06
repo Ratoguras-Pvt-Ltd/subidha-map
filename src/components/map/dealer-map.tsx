@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useRef } from "react";
+import { useCallback, useEffect, useMemo, useRef } from "react";
 import { MapContainer, Marker, TileLayer, useMap, ZoomControl } from "react-leaflet";
 import MarkerClusterGroup from "react-leaflet-cluster";
 import L from "leaflet";
@@ -17,6 +17,8 @@ type Props = {
   selectedId: string | null;
   onSelect: (id: string) => void;
   userLocation: { lat: number; lng: number } | null;
+  /** The dealer sheet's collapsed-state height, as a fraction of this map's column. */
+  sheetPeek: number;
 };
 
 /** Fallback view: Biratnagar, the centre of the dealer network. */
@@ -86,35 +88,62 @@ function userIcon(): L.DivIcon {
 function ViewController({
   dealers,
   selectedId,
+  sheetPeek,
 }: {
   dealers: PublicDealer[];
   selectedId: string | null;
+  sheetPeek: number;
 }) {
   const map = useMap();
   const hasFitted = useRef(false);
+
+  // Below `lg` the dealer sheet sits on top of the map, so the usable band is the
+  // strip above it. Anything that centres has to aim at that band's middle, or the
+  // network — and every pin the user taps — lands underneath the sheet. matchMedia
+  // rather than a hook: this is one-shot imperative Leaflet code inside an effect,
+  // not a render branch, so it doesn't need the app's CSS-only breakpoint story.
+  const coveredPx = useCallback(
+    () =>
+      window.matchMedia("(min-width: 1024px)").matches
+        ? 0
+        : Math.round(map.getContainer().clientHeight * sheetPeek),
+    [map, sheetPeek],
+  );
 
   useEffect(() => {
     if (hasFitted.current || dealers.length === 0) return;
     hasFitted.current = true;
     map.fitBounds(
       L.latLngBounds(dealers.map((d) => [d.latitude, d.longitude] as [number, number])),
-      { padding: [40, 40] },
+      { paddingTopLeft: [40, 40], paddingBottomRight: [40, 40 + coveredPx()] },
     );
-  }, [dealers, map]);
+  }, [dealers, map, coveredPx]);
 
   useEffect(() => {
     if (!selectedId) return;
     const dealer = dealers.find((d) => d.id === selectedId);
     if (!dealer) return;
-    map.flyTo([dealer.latitude, dealer.longitude], Math.max(map.getZoom(), 15), {
-      duration: 0.6,
-    });
-  }, [selectedId, dealers, map]);
+    const zoom = Math.max(map.getZoom(), 15);
+    // Centre half the covered strip *south* of the dealer, which lifts the pin by
+    // the same amount into the visible band. flyTo has no padding option, so the
+    // offset is applied in projected pixels instead.
+    const target = map.unproject(
+      map.project([dealer.latitude, dealer.longitude], zoom).add(L.point(0, coveredPx() / 2)),
+      zoom,
+    );
+    map.flyTo(target, zoom, { duration: 0.6 });
+  }, [selectedId, dealers, map, coveredPx]);
 
   return null;
 }
 
-export default function DealerMap({ dealers, selectedId, onSelect, userLocation }: Props) {
+export default function DealerMap({
+  dealers,
+  selectedId,
+  onSelect,
+  userLocation,
+  sheetPeek,
+}: Props) {
   const markers = useMemo(
     () =>
       dealers.map((dealer) => (
@@ -147,6 +176,8 @@ export default function DealerMap({ dealers, selectedId, onSelect, userLocation 
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         maxZoom={19}
       />
+      {/* Stays bottomright — the mobile @media block in globals.css lifts this
+          corner's controls (zoom + attribution) above the dealer sheet below `lg`. */}
       <ZoomControl position="bottomright" />
 
       <MarkerClusterGroup
@@ -162,7 +193,7 @@ export default function DealerMap({ dealers, selectedId, onSelect, userLocation 
         <Marker position={[userLocation.lat, userLocation.lng]} icon={userIcon()} />
       ) : null}
 
-      <ViewController dealers={dealers} selectedId={selectedId} />
+      <ViewController dealers={dealers} selectedId={selectedId} sheetPeek={sheetPeek} />
     </MapContainer>
   );
 }

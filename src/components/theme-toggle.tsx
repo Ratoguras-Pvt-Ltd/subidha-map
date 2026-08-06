@@ -13,6 +13,10 @@ export function ThemeToggle() {
     <Button
       variant="ghost"
       size="icon"
+      // 44px below `lg` for the public page's touch-target floor; both header bars
+      // are h-14 so this still fits. Spills into the admin header too — a strict
+      // improvement on a phone, no change on desktop.
+      className="size-11 lg:size-8"
       onClick={() => setTheme(next)}
       aria-label={`Switch to ${next} mode`}
     >

@@ -195,3 +195,36 @@
   font-weight: 600;
   font-family: inherit;
 }
+
+/*
+ * Below lg the dealer sheet covers the bottom of the map, so Leaflet's bottom-corner
+ * controls — the zoom buttons and the OpenStreetMap credit the tile policy requires —
+ * ride on the sheet's shoulder instead of disappearing under it. --sheet-h is set by
+ * DealerExplorer on its shell and inherits down into .leaflet-container; --sheet-drag
+ * is the live value while a finger is on the grab handle. A percentage `bottom`
+ * resolves against .leaflet-container's height, the same box --sheet-h is a
+ * percentage of, so the two stay in lockstep with no extra measurement.
+ *
+ * Unlayered like the Leaflet overrides above, for the same load-order reason.
+ */
+@media (max-width: 1023.98px) {
+  .leaflet-container .leaflet-bottom {
+    bottom: calc(var(--sheet-drag, var(--sheet-h, 0px)) + 0.5rem);
+  }
+
+  /*
+   * Leaflet ships 26-30px zoom buttons — under the 44px floor the rest of this page
+   * now honours. Pinch still works; this is for people who can't pinch.
+   *
+   * Targets both button classes rather than the shared `.leaflet-bar a`: Leaflet's
+   * own touch stylesheet rule (`.leaflet-touch .leaflet-bar a`) has the same
+   * specificity and loads after this file (its CSS ships inside the dynamically
+   * imported map chunk), so a same-specificity rule here would lose the tie.
+   */
+  .leaflet-container .leaflet-bar a.leaflet-control-zoom-in,
+  .leaflet-container .leaflet-bar a.leaflet-control-zoom-out {
+    width: 44px;
+    height: 44px;
+    line-height: 44px;
+  }
+}

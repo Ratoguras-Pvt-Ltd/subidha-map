@@ -11,7 +11,15 @@ export default async function HomePage() {
     // where only the dealer list scrolls. As a normal-flow element the long list still
     // leaked height to the document root and gave the whole page a scrollbar; taking
     // it out of flow makes that impossible.
-    <div className="fixed inset-0 flex flex-col overflow-hidden">
+    //
+    // `overflow-clip`, not `overflow-hidden`: CSS spec still counts a `hidden` box as
+    // a scroll container, just one without visible scrollbars — so `scrollIntoView()`
+    // on a selected dealer card (in DealerExplorer) walked past #dealer-list and
+    // scrolled THIS box instead, shoving the whole app off-screen and leaving a blank
+    // area where nothing had been rendered. `clip` looks identical but is explicitly
+    // excluded from the scroll-container chain, which is what "only the dealer list
+    // scrolls" actually requires.
+    <div className="fixed inset-0 flex flex-col overflow-clip">
       <SiteHeader dealerCount={dealers.length} />
 
       {/* The map is the product, so it gets the viewport. The h1 stays for crawlers

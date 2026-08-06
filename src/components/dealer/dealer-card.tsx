@@ -109,7 +109,7 @@ export const DealerCard = forwardRef<HTMLElement, Props>(function DealerCard(
             render={<a href={`tel:${dealer.phone}`} />}
             // Base UI needs telling that this renders an anchor, not a <button>.
             nativeButton={false}
-            size="sm"
+            size="touch"
             variant="default"
             onClick={(e) => e.stopPropagation()}
           >
@@ -127,7 +127,7 @@ export const DealerCard = forwardRef<HTMLElement, Props>(function DealerCard(
             />
           }
           nativeButton={false}
-          size="sm"
+          size="touch"
           variant="outline"
           onClick={(e) => e.stopPropagation()}
         >
@@ -135,7 +135,7 @@ export const DealerCard = forwardRef<HTMLElement, Props>(function DealerCard(
           Directions
         </Button>
 
-        <Button size="sm" variant="ghost" onClick={copyAddress}>
+        <Button size="touch" variant="ghost" onClick={copyAddress}>
           {copied ? (
             <Check className="size-3.5 text-green-600" aria-hidden />
           ) : (
