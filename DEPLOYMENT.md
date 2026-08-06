@@ -32,6 +32,8 @@ vercel env add ADMIN_EMAIL production
 vercel env add ADMIN_PASSWORD production     # 12+ characters
 vercel env add GEOCODE_CONTACT production
 vercel env add NEXT_PUBLIC_SITE_URL production   # https://your-domain.com
+vercel env add ERP_FEED_URL production       # https://marutigas.ratoguras.com/api/dealer-stock/today
+vercel env add ERP_FEED_SECRET production    # must equal DEALER_MAP_API_SECRET in the ERP's .env
 ```
 
 `CRON_SECRET` is not optional in production: Vercel sends it as
@@ -103,7 +105,44 @@ curl -X POST https://your-domain.com/api/cron/reset-stock \
 # => {"ok":true,"ranAt":"…","timezone":"Asia/Kathmandu","dealersReset":N,"cylindersCleared":M}
 ```
 
-## 7. Verify the deployment
+## 7. The ERP dispatch sync
+
+Stock numbers no longer have to be typed in by hand. `/api/cron/sync-erp-stock` pulls
+today's dispatched cylinder counts from the Subidha Gas ERP and writes them onto the
+matching dealers:
+
+```json
+{ "path": "/api/cron/sync-erp-stock", "schedule": "0 * * * *" }
+```
+
+**This hourly schedule needs the Pro plan.** Hobby allows 2 crons at once-per-day
+granularity — enough slots for both jobs, but a daily sync would only ever show the
+one moment it ran. Two ways round it on Hobby:
+
+- Change the schedule to a single useful time of day (e.g. `30 12 * * *` = 18:15 in
+  Kathmandu, after the day's dispatching) and accept one refresh per day, or
+- have the ERP trigger it after each dispatch — the route accepts `POST` with the same
+  bearer token, so nothing here needs to change.
+
+Dealers are matched **by name**, since the two systems keep separate dealer lists with
+no shared id. The response reports what did not line up, and it is worth reading after
+the first run:
+
+```bash
+curl -X POST https://your-domain.com/api/cron/sync-erp-stock \
+  -H "Authorization: Bearer $CRON_SECRET"
+# => {"ok":true,"date":"2026-08-06","matched":37,"updated":12,"unmatched":[…],"ambiguous":[…]}
+```
+
+`unmatched` names exist in the ERP but not here (or are spelled differently);
+`ambiguous` names collide with two local dealers, so the sync refuses to guess which
+one gets the stock. Both are fixed by renaming on one side or the other.
+
+Quantities are *set*, never added, so re-running the sync mid-day is harmless. Dealers
+absent from the feed are left alone rather than zeroed — that is the nightly reset's job,
+and zeroing here would wipe any count an admin entered by hand.
+
+## 8. Verify the deployment
 
 - [ ] Homepage renders the clustered map; zooming in splits the clusters.
 - [ ] Dealer count in the header reads **390**.
@@ -117,6 +156,10 @@ curl -X POST https://your-domain.com/api/cron/reset-stock \
 - [ ] `/api/cron/reset-stock` returns **401** with no `Authorization` header.
 - [ ] The same call with the correct bearer token returns `{"ok":true,…}`, zeroes the
       dashboard totals, and adds "Nightly reset" rows to `/admin/history`.
+- [ ] `/api/cron/sync-erp-stock` returns **401** with no `Authorization` header, and
+      **502** with a valid token but `ERP_FEED_URL` unset.
+- [ ] With both env vars set, it returns `{"ok":true,"matched":N,…}` and the dispatched
+      quantities show on the public map as "ERP dispatch sync" rows in `/admin/history`.
 
 ---
 

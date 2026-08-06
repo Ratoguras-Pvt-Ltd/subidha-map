@@ -4,6 +4,10 @@
     {
       "path": "/api/cron/reset-stock",
       "schedule": "15 18 * * *"
+    },
+    {
+      "path": "/api/cron/sync-erp-stock",
+      "schedule": "0 * * * *"
     }
   ]
 }

@@ -10,7 +10,7 @@
     "postinstall": "prisma generate",
     "import": "tsx scripts/import-kml.ts",
     "seed": "tsx prisma/seed.ts",
-    "test": "tsx --test tests/import.test.ts tests/rate-limit.test.ts",
+    "test": "tsx --test tests/import.test.ts tests/rate-limit.test.ts tests/erp-sync.test.ts",
     "db:migrate": "prisma migrate dev",
     "db:deploy": "prisma migrate deploy",
     "db:studio": "prisma studio"

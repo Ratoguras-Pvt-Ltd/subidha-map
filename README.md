@@ -7,6 +7,10 @@ password-protected dashboard for staff to keep stock numbers current.
   stock, with search, filters, "near me", click-to-call and directions.
 - **Admin** — dashboard stats, dealer CRUD, stock updates, and an audit trail of
   every change.
+- **ERP sync** — an hourly cron pulls today's dispatched cylinder counts from the
+  Subidha Gas ERP, so the map shows the day's real deliveries instead of hand-typed
+  figures. Manual entry still works, and wins until the next pull. Dealers are matched
+  by name; see [`DEPLOYMENT.md`](./DEPLOYMENT.md) §7.
 
 Built with Next.js 15 (App Router), TypeScript, Tailwind v4, shadcn/ui, Prisma 7,
 Postgres, Auth.js v5, Leaflet + React Leaflet. No paid mapping APIs.
@@ -184,27 +188,31 @@ from `deriveStatus()`.
 | 1 – 9 | `CRITICAL` | 🔴 red |
 | 0 | `OUT_OF_STOCK` | ⚫ gray |
 
-The public filter bar offers three buckets, so **Low Stock** covers both yellow and
-red — a dealer with 4 cylinders and one with 40 both answer "who is running low?".
+The public filter bar offers **All Dealers · Available · Low Stock**, so **Low Stock**
+covers both yellow and red — a dealer with 4 cylinders and one with 40 both answer
+"who is running low?".
 
-### The map plots only dealers with stock
+There is no "Out of Stock" filter. A button that lists only dealers with nothing to
+sell today serves no customer.
 
-Out-of-stock dealers get **no pin**. A customer scanning the map wants somewhere to
-buy gas today, and ~380 gray pins for dealers with nothing to sell bury the handful
-that can actually help. They remain in the dealer list and under the "Out of Stock"
-filter, so they are still searchable — they just don't clutter the map. The rule
-lives in `isPlottedOnMap()` in `src/lib/stock.ts`.
+### The public view shows only dealers with stock
+
+Out-of-stock dealers appear **neither as a map pin nor as a card in the side panel**.
+A customer wants somewhere to buy gas today, and ~380 entries for dealers with
+nothing to sell bury the handful that can actually help. The rule is `hasStock()` in
+`src/lib/stock.ts`, applied once in `DealerExplorer` so the map and the list can never
+disagree.
+
+They are not lost: the header still reports the full **390-dealer** network, staff see
+every dealer in the admin dashboard, and `/api/dealers` returns all of them with their
+quantities.
 
 Each pin prints its cylinder count, abbreviated past a thousand (`1450` → `1.4k`), so
 the map answers "how many, and where?" without a click.
 
-Consequence worth knowing: because stock resets nightly, **the map is empty every
-morning until deliveries are recorded.** That is expected, and the map says so in
-words rather than showing a blank basemap.
-
-Because everything imports at 0 — and returns to 0 each midnight — the public map
-starts entirely gray each day. The banner explaining that disappears as soon as any
-deliveries are recorded.
+Consequence worth knowing: because stock resets nightly, **the public view is empty
+every morning until deliveries are recorded.** That is expected. The map and the list
+each say so in words rather than showing a blank basemap or a blank column.
 
 ---
 
