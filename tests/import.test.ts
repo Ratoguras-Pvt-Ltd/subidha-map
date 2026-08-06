@@ -3,6 +3,7 @@ import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 
 import { extractPhone, parseCoordinates, parseKml, makeSourceKey } from "../scripts/kml";
+import { placelessNameKey, readPhoneCsv, splitCsvLine } from "../scripts/dealer-csv";
 import {
   FILTER_LABELS,
   RESET_TIMEZONE,
@@ -311,4 +312,50 @@ test("haversineKm returns a sane distance across the dealer network", () => {
   const km = haversineKm(26.5887411, 87.2746376, 26.4996952, 87.1229919);
   assert.ok(km > 15 && km < 25, `expected 15–25 km, got ${km}`);
   assert.equal(haversineKm(26.5, 87.2, 26.5, 87.2), 0);
+});
+
+// --- the dealer-list CSV (npm run import-phones) -----------------------------------
+
+test("a quoted dealer name keeps the comma that a plain split would break on", () => {
+  assert.deepEqual(splitCsvLine('"Aakansha Jeneral Store,Birendra Bazar",West,9805901543,,'), [
+    "Aakansha Jeneral Store,Birendra Bazar",
+    "West",
+    "9805901543",
+    "",
+    "",
+  ]);
+  assert.deepEqual(splitCsvLine('Plain Name,East,,,'), ["Plain Name", "East", "", "", ""]);
+  assert.deepEqual(splitCsvLine('"He said ""hi""",A,9801234567'), ['He said "hi"', "A", "9801234567"]);
+});
+
+test("readPhoneCsv finds its columns by header, not by position", () => {
+  const { rows } = readPhoneCsv('Phone,Dealer Name\n9805901543,"Shop, Place"');
+  assert.deepEqual(rows, [{ name: "Shop, Place", phone: "9805901543" }]);
+  assert.throws(() => readPhoneCsv("Dealer Name,Area\nShop,West"), /Phone/);
+});
+
+test("readPhoneCsv separates blank numbers from unusable ones", () => {
+  const csv = [
+    "Dealer Name,Area,Phone",
+    "Good Shop,West,9805901543",
+    "Spaced Shop,West,+977 981-9050463",
+    "Blank Shop,West,",
+    "Landline Shop,West,021-460123",
+  ].join("\n");
+  const { rows, noPhone, unusable } = readPhoneCsv(csv);
+  assert.deepEqual(rows.map((r) => r.phone), ["9805901543", "9819050463"]);
+  assert.equal(noPhone, 1);
+  assert.equal(unusable.length, 1);
+});
+
+test("placelessNameKey lines the csv's names up with the ones stored here", () => {
+  // The csv writes "Shop, Place"; the KML-derived list here writes just "Shop".
+  assert.equal(placelessNameKey("Aarti Gas Pasal, Itr"), placelessNameKey("Aarti Gas Pasal"));
+  assert.equal(placelessNameKey("Aayan Kirana Suppliers (Itahari)"), placelessNameKey("Aayan Kirana Suppliers"));
+  assert.equal(placelessNameKey("Purnima Gr. Store & Gas Supliers,Brt."), placelessNameKey("Purnima Gr Store & Gas Supliers"));
+  // Different shops stay different, so the import cannot cross-wire two dealers.
+  assert.notEqual(placelessNameKey("Anil Kirana Pasal, Katahari"), placelessNameKey("Anjali Traders, Katahari"));
+  // Two branches of one chain collapse to one key — which is exactly why a key
+  // resolving to more than one dealer is skipped rather than guessed.
+  assert.equal(placelessNameKey("Krishna Gas, Damak"), placelessNameKey("Krishna Gas, Birtamod"));
 });
