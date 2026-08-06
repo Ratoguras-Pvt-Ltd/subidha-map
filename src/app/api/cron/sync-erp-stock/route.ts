@@ -51,9 +51,11 @@ async function run(request: Request) {
   revalidatePath("/admin");
   revalidatePath("/admin/history");
 
+  // The unlinked count is the one worth watching: those dealers dispatched cylinders
+  // today and none of it reaches the map until someone runs `npm run link-erp`.
   console.log(
     `[erp-sync] ${summary.date}: matched ${summary.matched}, updated ${summary.updated}, ` +
-      `unmatched ${summary.unmatched.length}, ambiguous ${summary.ambiguous.length}`,
+      `unlinked ${summary.unlinked.length}`,
   );
 
   return Response.json({ ok: true, ...summary });

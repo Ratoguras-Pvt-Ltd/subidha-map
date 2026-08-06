@@ -27,6 +27,19 @@ model Dealer {
   /// script re-run without duplicating the 409 source rows.
   sourceKey String @unique
 
+  /// `vendors.id` in the Subidha ERP — the only thing the stock sync matches on.
+  ///
+  /// Names cannot do this job: the two dealer lists were authored separately and only
+  /// 4 of 349 ERP names resolve to a dealer here ("Aakansha Jeneral Store,Birendra
+  /// Bazar" against "Karki Suppler"). Matching on a normalised name found under half
+  /// even at its loosest, and bought name collisions in exchange — which would write
+  /// one dealer's cylinders onto another. An explicit id is exact and survives a
+  /// rename on either side.
+  ///
+  /// Null means nobody has linked this dealer yet, so the sync skips it. Populate with
+  /// `npm run link-erp` (see scripts/link-erp-dealers.mts).
+  erpVendorId Int? @unique
+
   dealerName   String
   address      String?
   district     String?
