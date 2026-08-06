@@ -1,6 +1,32 @@
 # Deploying to Vercel
 
-## 1. Create the database (Neon)
+Written for the **Hobby (free)** plan, which shapes two decisions you will see below:
+only one cron job runs on Vercel, and the hourly ERP sync runs from GitHub Actions
+instead.
+
+Follow the steps in order. Steps 1–4 get the site up; step 5 puts the dealers in the
+database; step 6 is only needed once the ERP feed exists.
+
+---
+
+## 1. Import the repository
+
+Vercel dashboard → **Add New** → **Project** → import
+`Ratoguras-Pvt-Ltd/subidha-map` → **Next.js** is detected automatically.
+
+Do not deploy yet — it will fail without a database. Add the environment variables
+first.
+
+`vercel.json` already sets the build command:
+
+```json
+"buildCommand": "prisma migrate deploy && npm run build"
+```
+
+That applies migrations before the build, so the schema is never behind the code. You do
+not need to set a build command in the dashboard.
+
+## 2. Create the database (Neon)
 
 Easiest path is the Vercel Marketplace, which wires the connection strings in for you:
 
@@ -9,7 +35,8 @@ Easiest path is the Vercel Marketplace, which wires the connection strings in fo
    Singapore is the nearest to Nepal).
 
 Vercel injects `DATABASE_URL` and `DATABASE_URL_UNPOOLED` automatically. This project
-expects the unpooled one as `DIRECT_URL`, so add that alias:
+expects the unpooled one as **`DIRECT_URL`**, so add that alias by hand — nothing else
+creates it:
 
 ```bash
 vercel env add DIRECT_URL production   # paste the DATABASE_URL_UNPOOLED value
@@ -17,47 +44,33 @@ vercel env add DIRECT_URL production   # paste the DATABASE_URL_UNPOOLED value
 
 > `DATABASE_URL` must be the **pooled** URL (host contains `-pooler`). Serverless
 > functions open a connection per invocation and will exhaust a direct connection
-> limit. `DIRECT_URL` must be the unpooled one — Prisma migrations need a real
+> limit. `DIRECT_URL` must be the unpooled one — `prisma migrate deploy` needs a real
 > session.
 
 Doing it by hand instead? Create a project at [neon.tech](https://neon.tech), copy
 both connection strings, and set them as env vars.
 
-## 2. Set the remaining environment variables
+## 3. Set the environment variables
 
-```bash
-vercel env add AUTH_SECRET production        # openssl rand -base64 32
-vercel env add CRON_SECRET production        # openssl rand -hex 32
-vercel env add ADMIN_EMAIL production
-vercel env add ADMIN_PASSWORD production     # 12+ characters
-vercel env add GEOCODE_CONTACT production
-vercel env add NEXT_PUBLIC_SITE_URL production   # https://your-domain.com
-vercel env add ERP_FEED_URL production       # https://marutigas.ratoguras.com/api/dealer-stock/today
-vercel env add ERP_FEED_SECRET production    # must equal DEALER_MAP_API_SECRET in the ERP's .env
-```
+| Variable | Needed | Notes |
+| --- | --- | --- |
+| `DATABASE_URL` | deploy | Neon **pooled** URL (`-pooler` in the host) |
+| `DIRECT_URL` | deploy | Neon **unpooled** URL; used by `prisma migrate deploy` |
+| `AUTH_SECRET` | deploy | 32 random bytes, base64 — `openssl rand -base64 32` |
+| `CRON_SECRET` | deploy | 32 random bytes, hex — `openssl rand -hex 32` |
+| `NEXT_PUBLIC_SITE_URL` | deploy | Final public URL. Feeds canonical tags, OG images and the sitemap, so a placeholder here ships wrong metadata |
+| `ADMIN_NAME` / `ADMIN_EMAIL` / `ADMIN_PASSWORD` | `npm run seed` | Password **12+ characters**; the seed script refuses anything shorter or obviously placeholder |
+| `GEOCODE_CONTACT` | `npm run import` | Contact address for the Nominatim `User-Agent`, required by its usage policy |
+| `ERP_FEED_URL` | later | `https://marutigas.ratoguras.com/api/dealer-stock/today`. Leave unset for now |
+| `ERP_FEED_SECRET` | later | Must equal `DEALER_MAP_API_SECRET` in the ERP's `.env`. Leave unset for now |
 
-`CRON_SECRET` is not optional in production: Vercel sends it as
-`Authorization: Bearer …` to the nightly reset endpoint, and without it the only
-other accepted caller is a logged-in admin — meaning the scheduled run would be
-rejected and stock would never clear.
+`CRON_SECRET` is not optional in production: Vercel sends it as `Authorization:
+Bearer …` to the nightly reset, and the only other accepted caller is a logged-in
+admin — so without it the scheduled run is rejected and stock never clears.
 
 Leave `AUTH_URL` unset — Auth.js infers it from the deployment.
 
 Repeat for the `preview` environment if you want working preview deployments.
-
-## 3. Run migrations on deploy
-
-Set the build command so the schema is applied before the app builds:
-
-**Project Settings → Build & Development Settings → Build Command:**
-
-```
-prisma migrate deploy && next build
-```
-
-`prisma generate` already runs via the `postinstall` script, which matters because
-Prisma 7 generates the client into `src/generated/` rather than `node_modules` and
-that directory is gitignored.
 
 ## 4. Deploy
 
@@ -65,39 +78,45 @@ that directory is gitignored.
 vercel --prod
 ```
 
-## 5. Seed and import — once, against production
+`postinstall` runs `prisma generate`, which is load-bearing: Prisma 7 generates the
+client into `src/generated/prisma`, and that directory is gitignored. Do not remove that
+script.
 
-Both scripts are one-off admin tasks, not part of the build. Run them locally with
-your production connection string:
+## 5. Seed the admin and import the dealers
+
+Both are one-off, and both run **from your machine against the production database**,
+using the **unpooled** URL. The KML source (`Maruti Gas Dealer (1).kmz/`) is gitignored,
+so the import cannot run on Vercel — it only exists locally.
 
 ```bash
-# Use the DIRECT (unpooled) URL for these — they are long-running, not serverless.
-DATABASE_URL="<unpooled-neon-url>" npm run seed
-DATABASE_URL="<unpooled-neon-url>" npm run import
+DATABASE_URL="<unpooled production URL>" npm run seed
+DATABASE_URL="<unpooled production URL>" npm run import
 ```
 
-The import takes ~7 minutes the first time because of the 1 req/sec Nominatim limit.
-If `scripts/geocode-cache.json` is committed (it should be), it finishes in seconds
-and makes no network calls.
+The import must report exactly **390 dealers** — it asserts this and exits non-zero
+otherwise, so a parser regression fails loudly instead of quietly importing a fraction
+of the network. `scripts/geocode-cache.json` is committed (390 entries), so no
+geocoding network calls are made and this finishes in seconds.
 
-Then sign in at `https://your-domain.com/admin/login` and start entering stock.
+Then sign in at `https://your-domain.com/admin/login`.
 
 ## 6. The nightly stock reset
 
-`vercel.json` already registers the cron:
+`vercel.json` registers one cron, which is all the Hobby plan allows:
 
 ```json
 { "path": "/api/cron/reset-stock", "schedule": "15 18 * * *" }
 ```
 
-Vercel cron schedules are **UTC**. Nepal is a fixed UTC+05:45 with no daylight
-saving, so `18:15 UTC` is `00:00` in Kathmandu — every night, all year.
+Vercel cron schedules are **UTC**. Nepal is a fixed UTC+05:45 with no daylight saving,
+so `18:15 UTC` is `00:00` in Kathmandu — every night, all year.
+`tests/import.test.ts` asserts the schedule and the timezone still agree, in both
+January and July, so editing the cron without updating the test fails the build.
 
 Confirm it registered under **Project → Settings → Cron Jobs** after the first
 production deploy. Crons only run on **production** deployments, never previews.
 
-On the Hobby plan you get 2 cron jobs at once-per-day granularity, which is exactly
-what this needs. Test it without waiting for midnight:
+Test it without waiting for midnight:
 
 ```bash
 curl -X POST https://your-domain.com/api/cron/reset-stock \
@@ -105,77 +124,117 @@ curl -X POST https://your-domain.com/api/cron/reset-stock \
 # => {"ok":true,"ranAt":"…","timezone":"Asia/Kathmandu","dealersReset":N,"cylindersCleared":M}
 ```
 
-## 7. The ERP dispatch sync
+## 7. The ERP stock sync (enable once the ERP feed is configured)
 
-Stock numbers no longer have to be typed in by hand. `/api/cron/sync-erp-stock` pulls
-today's dispatched cylinder counts from the Subidha Gas ERP and writes them onto the
-matching dealers:
+Stock numbers can come from the Subidha Gas ERP instead of being typed in by hand:
+`/api/cron/sync-erp-stock` pulls today's dispatched cylinder counts and writes them onto
+the linked dealers.
 
-```json
-{ "path": "/api/cron/sync-erp-stock", "schedule": "0 * * * *" }
+This runs from **GitHub Actions**, not a Vercel cron — see the limitation note below.
+The workflow is `.github/workflows/erp-sync.yml`, hourly, and it stays dormant until you
+switch it on.
+
+**a. ERP side.** On `marutigas.ratoguras.com`, set the shared secret and clear the
+config cache (Laravel caches config in production, so editing `.env` alone changes
+nothing):
+
+```bash
+echo 'DEALER_MAP_API_SECRET=<a new random hex string>' >> .env
+php artisan config:clear && php artisan config:cache
 ```
 
-**This hourly schedule needs the Pro plan.** Hobby allows 2 crons at once-per-day
-granularity — enough slots for both jobs, but a daily sync would only ever show the
-one moment it ran. Two ways round it on Hobby:
+Verify: no token must give 401, the right token must give JSON.
 
-- Change the schedule to a single useful time of day (e.g. `30 12 * * *` = 18:15 in
-  Kathmandu, after the day's dispatching) and accept one refresh per day, or
-- have the ERP trigger it after each dispatch — the route accepts `POST` with the same
-  bearer token, so nothing here needs to change.
+```bash
+curl -s https://marutigas.ratoguras.com/api/dealer-stock/today            # 401
+curl -s https://marutigas.ratoguras.com/api/dealer-stock/today \
+  -H "Authorization: Bearer <the secret>"                                  # {"date":…,"dealers":[…]}
+```
 
-Dealers are matched **by name**, since the two systems keep separate dealer lists with
-no shared id. The response reports what did not line up, and it is worth reading after
-the first run:
+A `503 Dealer map feed is not configured.` means the secret is still unset or the config
+cache is stale.
+
+**b. Vercel side.** Add `ERP_FEED_URL` and `ERP_FEED_SECRET` (the same string as
+`DEALER_MAP_API_SECRET`), then redeploy so the functions pick them up.
+
+**c. Link the dealers.** This step is mandatory and easy to miss — without it the sync
+runs, reports success, and updates nothing. The two systems keep separately-authored
+dealer lists, so each dealer here has to record its ERP `vendors.id`:
+
+```bash
+npm run link-erp                          # report: who is linked, who is not
+npm run link-erp -- --auto                # link the unambiguous name matches (101 of 349)
+npm run link-erp -- --template todo.csv   # export the remaining 248 with suggestions
+npm run link-erp -- --csv todo.csv        # apply the filled-in file
+```
+
+Names alone cannot do this job: only 4 of 349 ERP names match a dealer here exactly
+("Aakansha Jeneral Store,Birendra Bazar" against "Karki Suppler"), and loosening the
+match far enough to help starts colliding, which would credit one dealer's cylinders to
+another. So `--auto` writes only where a name resolves to exactly one dealer, and
+everything else waits for a human.
+
+**d. GitHub side.** Settings → Secrets and variables → Actions:
+
+| Kind | Name | Value |
+| --- | --- | --- |
+| Secret | `PROD_URL` | `https://your-domain.com` (no trailing slash needed) |
+| Secret | `CRON_SECRET` | the same value as Vercel's `CRON_SECRET` |
+| Variable | `ERP_SYNC_ENABLED` | `true` — **set this last**, it is the on switch |
+
+Until `ERP_SYNC_ENABLED` is `true`, the workflow skips every run, so nothing fails on a
+schedule while the feed is still being set up. Test by hand from the **Actions** tab
+(**Run workflow**) before enabling the schedule.
 
 ```bash
 curl -X POST https://your-domain.com/api/cron/sync-erp-stock \
   -H "Authorization: Bearer $CRON_SECRET"
-# => {"ok":true,"date":"2026-08-06","matched":37,"updated":12,"unmatched":[…],"ambiguous":[…]}
+# => {"ok":true,"date":"…","matched":37,"updated":12,"unlinked":[…]}
 ```
 
-`unmatched` names exist in the ERP but not here (or are spelled differently);
-`ambiguous` names collide with two local dealers, so the sync refuses to guess which
-one gets the stock. Both are fixed by renaming on one side or the other.
-
-Quantities are *set*, never added, so re-running the sync mid-day is harmless. Dealers
-absent from the feed are left alone rather than zeroed — that is the nightly reset's job,
-and zeroing here would wipe any count an admin entered by hand.
+`unlinked` is the list worth reading: those dealers dispatched cylinders today and none
+of it reached the map, because nobody has linked them yet.
 
 ## 8. Verify the deployment
 
 - [ ] Homepage renders the clustered map; zooming in splits the clusters.
 - [ ] Dealer count in the header reads **390**.
-- [ ] `/api/dealers` returns `{"count": 390, ...}`.
+- [ ] `/api/dealers` returns `{"count": …}` for the dealers currently holding stock.
 - [ ] `/admin` redirects to `/admin/login` when signed out.
 - [ ] Login works; a wrong password gives a generic error.
-- [ ] Updating one dealer's stock to 120 turns its pin **green** on the public map
-      after a reload, and the change appears in `/admin/history`.
+- [ ] Updating one dealer's stock to 120 turns its pin **green** on the public map after
+      a reload, and the change appears in `/admin/history`.
 - [ ] `/sitemap.xml` lists the dealer pages.
 - [ ] `/robots.txt` disallows `/admin`.
-- [ ] `/api/cron/reset-stock` returns **401** with no `Authorization` header.
-- [ ] The same call with the correct bearer token returns `{"ok":true,…}`, zeroes the
-      dashboard totals, and adds "Nightly reset" rows to `/admin/history`.
-- [ ] `/api/cron/sync-erp-stock` returns **401** with no `Authorization` header, and
-      **502** with a valid token but `ERP_FEED_URL` unset.
-- [ ] With both env vars set, it returns `{"ok":true,"matched":N,…}` and the dispatched
-      quantities show on the public map as "ERP dispatch sync" rows in `/admin/history`.
+- [ ] `/api/cron/reset-stock` returns **401** with no `Authorization` header, and
+      `{"ok":true,…}` with the right bearer token — zeroing the dashboard totals and
+      adding "Nightly reset" rows to `/admin/history`.
+- [ ] `/api/cron/sync-erp-stock` returns **401** with no header, and **502** with a valid
+      token while `ERP_FEED_URL` is unset. Both are correct before step 7.
 
 ---
 
-## Notes
+## Known limitations
 
-**Region.** Put the functions in the same region as the database
-(Project Settings → Functions → Region → Singapore) — a cross-region round trip on
-every query is the single biggest avoidable latency here.
+**Nightly reset drifts by up to an hour.** Hobby-plan crons have ±59 min precision, so
+the reset fires somewhere between 00:00 and 00:59 Nepal time rather than exactly at
+midnight. Stock is a "delivered today" number that nobody reads at 00:30, so this is
+accepted rather than worked around.
 
-**Custom domain.** Add it under Project Settings → Domains, then update
-`NEXT_PUBLIC_SITE_URL` so canonical URLs, OG tags and the sitemap point at the real
-host.
+**The ERP sync cannot be a Vercel cron on Hobby.** Vercel rejects any schedule running
+more than once per day *at deploy time* ("Hobby accounts are limited to daily cron
+jobs"), and a once-daily sync would show one arbitrary moment of the day's dispatching.
+Hence GitHub Actions. The route itself is a normal endpoint and stays callable by bearer
+token, so moving it back to `vercel.json` is a two-line change if the project ever goes
+Pro.
 
-**Schema changes.** Always `npx prisma migrate dev` locally and commit the generated
-migration. Never `prisma db push` against production — it can drop columns without
-warning.
+**Scheduled GitHub workflows are disabled after 60 days of repository inactivity.** If
+the sync goes quiet, check that before debugging the code.
 
-**Re-importing later.** Safe at any time. Matching is on `sourceKey`, only blank
-fields get filled, and stock is never touched after the initial insert.
+**Every dealer starts with `erpVendorId` null**, so a freshly deployed sync matches
+nothing by design. It stays that way until `npm run link-erp` is run — see step 7c.
+
+**Re-running the import** overwrites `address`, `district` and `municipality` from
+Nominatim (which is what repairs a `--skip-geocode` pass), fills `phone` only when it is
+blank, and **never touches stock quantities or status**. Use `--skip-geocode` to
+preserve manual address edits.
