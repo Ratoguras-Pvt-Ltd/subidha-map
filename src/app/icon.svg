@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" role="img" aria-label="Subidha Gas">
+  <rect width="100" height="100" fill="#C4161C" />
+  <!--
+    The Subidha mark: two mirrored lobes separated by a diagonal, forming an S.
+    Drawn as one lobe plus a 180° rotation of it so the halves stay exactly
+    symmetrical, and as vector so it survives being rasterised down to 16px.
+  -->
+  <g fill="#ffffff">
+    <path d="M86 14 L44 14 A19 19 0 0 0 44 52 Z" />
+    <g transform="rotate(180 50 50)">
+      <path d="M86 14 L44 14 A19 19 0 0 0 44 52 Z" />
+    </g>
+  </g>
+</svg>

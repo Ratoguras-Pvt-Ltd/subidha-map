@@ -1,0 +1,85 @@
+// Prisma 7: the `prisma-client` provider requires an explicit `output`, and the
+// datasource URL now lives in prisma.config.ts (not in this file).
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+enum Role {
+  ADMIN
+}
+
+enum StockStatus {
+  AVAILABLE
+  LOW_STOCK
+  CRITICAL
+  OUT_OF_STOCK
+}
+
+model Dealer {
+  id String @id @default(cuid())
+
+  /// Stable natural key derived from the KML name + coordinates. Lets the import
+  /// script re-run without duplicating the 409 source rows.
+  sourceKey String @unique
+
+  dealerName   String
+  address      String?
+  district     String?
+  municipality String?
+  latitude     Float
+  longitude    Float
+  phone        String?
+  email        String?
+
+  /// Raw KML <description> kept verbatim. The source mixes phone numbers,
+  /// contact-person names and volume notes in one free-text field; the import
+  /// extracts what it can and preserves the original here so nothing is lost.
+  notes String?
+
+  /// Always written together, and only ever by deriveStatus() in src/lib/stock.ts,
+  /// so quantity and status cannot drift apart.
+  stockQuantity Int         @default(0)
+  status        StockStatus @default(OUT_OF_STOCK)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  history StockHistory[]
+
+  @@index([status])
+  @@index([district])
+  @@index([dealerName])
+}
+
+model StockHistory {
+  id       String @id @default(cuid())
+  dealer   Dealer @relation(fields: [dealerId], references: [id], onDelete: Cascade)
+  dealerId String
+
+  previousQuantity Int
+  newQuantity      Int
+
+  /// User.id of the admin who made the change.
+  updatedBy   String
+  updatedByName String?
+  updatedAt   DateTime @default(now())
+
+  @@index([dealerId, updatedAt])
+  @@index([updatedAt])
+}
+
+model User {
+  id       String @id @default(cuid())
+  name     String
+  email    String @unique
+  /// bcrypt hash — never a plaintext password.
+  password String
+  role     Role   @default(ADMIN)
+
+  createdAt DateTime @default(now())
+}

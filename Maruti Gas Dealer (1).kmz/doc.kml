@@ -1,0 +1,5045 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+  <Document>
+    <name>Maruti Gas Dealer </name>
+    <description>The location of the dealers </description>
+    <Style id="icon-1899-0288D1-normal">
+      <IconStyle>
+        <scale>1</scale>
+        <Icon>
+          <href>images/icon-1.png</href>
+        </Icon>
+        <hotSpot x="32" xunits="pixels" y="64" yunits="insetPixels"/>
+      </IconStyle>
+      <LabelStyle>
+        <scale>0</scale>
+      </LabelStyle>
+    </Style>
+    <Style id="icon-1899-0288D1-highlight">
+      <IconStyle>
+        <scale>1</scale>
+        <Icon>
+          <href>images/icon-1.png</href>
+        </Icon>
+        <hotSpot x="32" xunits="pixels" y="64" yunits="insetPixels"/>
+      </IconStyle>
+      <LabelStyle>
+        <scale>1</scale>
+      </LabelStyle>
+    </Style>
+    <StyleMap id="icon-1899-0288D1">
+      <Pair>
+        <key>normal</key>
+        <styleUrl>#icon-1899-0288D1-normal</styleUrl>
+      </Pair>
+      <Pair>
+        <key>highlight</key>
+        <styleUrl>#icon-1899-0288D1-highlight</styleUrl>
+      </Pair>
+    </StyleMap>
+    <Style id="icon-1899-0288D1-labelson">
+      <IconStyle>
+        <scale>1</scale>
+        <Icon>
+          <href>images/icon-1.png</href>
+        </Icon>
+        <hotSpot x="32" xunits="pixels" y="64" yunits="insetPixels"/>
+      </IconStyle>
+    </Style>
+    <Style id="icon-1899-0288D1-labelson-nodesc">
+      <IconStyle>
+        <scale>1</scale>
+        <Icon>
+          <href>images/icon-1.png</href>
+        </Icon>
+        <hotSpot x="32" xunits="pixels" y="64" yunits="insetPixels"/>
+      </IconStyle>
+      <BalloonStyle>
+        <text><![CDATA[<h3>$[name]</h3>]]></text>
+      </BalloonStyle>
+    </Style>
+    <Style id="icon-1899-0288D1-nodesc-normal">
+      <IconStyle>
+        <scale>1</scale>
+        <Icon>
+          <href>images/icon-1.png</href>
+        </Icon>
+        <hotSpot x="32" xunits="pixels" y="64" yunits="insetPixels"/>
+      </IconStyle>
+      <LabelStyle>
+        <scale>0</scale>
+      </LabelStyle>
+      <BalloonStyle>
+        <text><![CDATA[<h3>$[name]</h3>]]></text>
+      </BalloonStyle>
+    </Style>
+    <Style id="icon-1899-0288D1-nodesc-highlight">
+      <IconStyle>
+        <scale>1</scale>
+        <Icon>
+          <href>images/icon-1.png</href>
+        </Icon>
+        <hotSpot x="32" xunits="pixels" y="64" yunits="insetPixels"/>
+      </IconStyle>
+      <LabelStyle>
+        <scale>1</scale>
+      </LabelStyle>
+      <BalloonStyle>
+        <text><![CDATA[<h3>$[name]</h3>]]></text>
+      </BalloonStyle>
+    </Style>
+    <StyleMap id="icon-1899-0288D1-nodesc">
+      <Pair>
+        <key>normal</key>
+        <styleUrl>#icon-1899-0288D1-nodesc-normal</styleUrl>
+      </Pair>
+      <Pair>
+        <key>highlight</key>
+        <styleUrl>#icon-1899-0288D1-nodesc-highlight</styleUrl>
+      </Pair>
+    </StyleMap>
+    <Style id="icon-1899-0F9D58-labelson-nodesc">
+      <IconStyle>
+        <scale>1</scale>
+        <Icon>
+          <href>images/icon-3.png</href>
+        </Icon>
+        <hotSpot x="32" xunits="pixels" y="64" yunits="insetPixels"/>
+      </IconStyle>
+      <BalloonStyle>
+        <text><![CDATA[<h3>$[name]</h3>]]></text>
+      </BalloonStyle>
+    </Style>
+    <Style id="icon-1899-1A237E-labelson-nodesc">
+      <IconStyle>
+        <scale>1</scale>
+        <Icon>
+          <href>images/icon-4.png</href>
+        </Icon>
+        <hotSpot x="32" xunits="pixels" y="64" yunits="insetPixels"/>
+      </IconStyle>
+      <BalloonStyle>
+        <text><![CDATA[<h3>$[name]</h3>]]></text>
+      </BalloonStyle>
+    </Style>
+    <Style id="icon-1899-558B2F-labelson-nodesc">
+      <IconStyle>
+        <scale>1</scale>
+        <Icon>
+          <href>images/icon-2.png</href>
+        </Icon>
+        <hotSpot x="32" xunits="pixels" y="64" yunits="insetPixels"/>
+      </IconStyle>
+      <BalloonStyle>
+        <text><![CDATA[<h3>$[name]</h3>]]></text>
+      </BalloonStyle>
+    </Style>
+    <Style id="icon-1899-795548-labelson-nodesc">
+      <IconStyle>
+        <scale>1</scale>
+        <Icon>
+          <href>images/icon-5.png</href>
+        </Icon>
+        <hotSpot x="32" xunits="pixels" y="64" yunits="insetPixels"/>
+      </IconStyle>
+      <BalloonStyle>
+        <text><![CDATA[<h3>$[name]</h3>]]></text>
+      </BalloonStyle>
+    </Style>
+    <Style id="icon-1899-880E4F-normal">
+      <IconStyle>
+        <scale>1</scale>
+        <Icon>
+          <href>images/icon-7.png</href>
+        </Icon>
+        <hotSpot x="32" xunits="pixels" y="64" yunits="insetPixels"/>
+      </IconStyle>
+      <LabelStyle>
+        <scale>0</scale>
+      </LabelStyle>
+    </Style>
+    <Style id="icon-1899-880E4F-highlight">
+      <IconStyle>
+        <scale>1</scale>
+        <Icon>
+          <href>images/icon-7.png</href>
+        </Icon>
+        <hotSpot x="32" xunits="pixels" y="64" yunits="insetPixels"/>
+      </IconStyle>
+      <LabelStyle>
+        <scale>1</scale>
+      </LabelStyle>
+    </Style>
+    <StyleMap id="icon-1899-880E4F">
+      <Pair>
+        <key>normal</key>
+        <styleUrl>#icon-1899-880E4F-normal</styleUrl>
+      </Pair>
+      <Pair>
+        <key>highlight</key>
+        <styleUrl>#icon-1899-880E4F-highlight</styleUrl>
+      </Pair>
+    </StyleMap>
+    <Style id="icon-1899-880E4F-labelson-nodesc">
+      <IconStyle>
+        <scale>1</scale>
+        <Icon>
+          <href>images/icon-7.png</href>
+        </Icon>
+        <hotSpot x="32" xunits="pixels" y="64" yunits="insetPixels"/>
+      </IconStyle>
+      <BalloonStyle>
+        <text><![CDATA[<h3>$[name]</h3>]]></text>
+      </BalloonStyle>
+    </Style>
+    <Style id="icon-1899-880E4F-nodesc-normal">
+      <IconStyle>
+        <scale>1</scale>
+        <Icon>
+          <href>images/icon-7.png</href>
+        </Icon>
+        <hotSpot x="32" xunits="pixels" y="64" yunits="insetPixels"/>
+      </IconStyle>
+      <LabelStyle>
+        <scale>0</scale>
+      </LabelStyle>
+      <BalloonStyle>
+        <text><![CDATA[<h3>$[name]</h3>]]></text>
+      </BalloonStyle>
+    </Style>
+    <Style id="icon-1899-880E4F-nodesc-highlight">
+      <IconStyle>
+        <scale>1</scale>
+        <Icon>
+          <href>images/icon-7.png</href>
+        </Icon>
+        <hotSpot x="32" xunits="pixels" y="64" yunits="insetPixels"/>
+      </IconStyle>
+      <LabelStyle>
+        <scale>1</scale>
+      </LabelStyle>
+      <BalloonStyle>
+        <text><![CDATA[<h3>$[name]</h3>]]></text>
+      </BalloonStyle>
+    </Style>
+    <StyleMap id="icon-1899-880E4F-nodesc">
+      <Pair>
+        <key>normal</key>
+        <styleUrl>#icon-1899-880E4F-nodesc-normal</styleUrl>
+      </Pair>
+      <Pair>
+        <key>highlight</key>
+        <styleUrl>#icon-1899-880E4F-nodesc-highlight</styleUrl>
+      </Pair>
+    </StyleMap>
+    <Style id="icon-1899-9C27B0-labelson-nodesc">
+      <IconStyle>
+        <scale>1</scale>
+        <Icon>
+          <href>images/icon-8.png</href>
+        </Icon>
+        <hotSpot x="32" xunits="pixels" y="64" yunits="insetPixels"/>
+      </IconStyle>
+      <BalloonStyle>
+        <text><![CDATA[<h3>$[name]</h3>]]></text>
+      </BalloonStyle>
+    </Style>
+    <Style id="icon-1899-C2185B-normal">
+      <IconStyle>
+        <scale>1</scale>
+        <Icon>
+          <href>images/icon-9.png</href>
+        </Icon>
+        <hotSpot x="32" xunits="pixels" y="64" yunits="insetPixels"/>
+      </IconStyle>
+      <LabelStyle>
+        <scale>0</scale>
+      </LabelStyle>
+    </Style>
+    <Style id="icon-1899-C2185B-highlight">
+      <IconStyle>
+        <scale>1</scale>
+        <Icon>
+          <href>images/icon-9.png</href>
+        </Icon>
+        <hotSpot x="32" xunits="pixels" y="64" yunits="insetPixels"/>
+      </IconStyle>
+      <LabelStyle>
+        <scale>1</scale>
+      </LabelStyle>
+    </Style>
+    <StyleMap id="icon-1899-C2185B">
+      <Pair>
+        <key>normal</key>
+        <styleUrl>#icon-1899-C2185B-normal</styleUrl>
+      </Pair>
+      <Pair>
+        <key>highlight</key>
+        <styleUrl>#icon-1899-C2185B-highlight</styleUrl>
+      </Pair>
+    </StyleMap>
+    <Style id="icon-1899-C2185B-labelson-nodesc">
+      <IconStyle>
+        <scale>1</scale>
+        <Icon>
+          <href>images/icon-9.png</href>
+        </Icon>
+        <hotSpot x="32" xunits="pixels" y="64" yunits="insetPixels"/>
+      </IconStyle>
+      <BalloonStyle>
+        <text><![CDATA[<h3>$[name]</h3>]]></text>
+      </BalloonStyle>
+    </Style>
+    <Style id="icon-1899-C2185B-nodesc-normal">
+      <IconStyle>
+        <scale>1</scale>
+        <Icon>
+          <href>images/icon-9.png</href>
+        </Icon>
+        <hotSpot x="32" xunits="pixels" y="64" yunits="insetPixels"/>
+      </IconStyle>
+      <LabelStyle>
+        <scale>0</scale>
+      </LabelStyle>
+      <BalloonStyle>
+        <text><![CDATA[<h3>$[name]</h3>]]></text>
+      </BalloonStyle>
+    </Style>
+    <Style id="icon-1899-C2185B-nodesc-highlight">
+      <IconStyle>
+        <scale>1</scale>
+        <Icon>
+          <href>images/icon-9.png</href>
+        </Icon>
+        <hotSpot x="32" xunits="pixels" y="64" yunits="insetPixels"/>
+      </IconStyle>
+      <LabelStyle>
+        <scale>1</scale>
+      </LabelStyle>
+      <BalloonStyle>
+        <text><![CDATA[<h3>$[name]</h3>]]></text>
+      </BalloonStyle>
+    </Style>
+    <StyleMap id="icon-1899-C2185B-nodesc">
+      <Pair>
+        <key>normal</key>
+        <styleUrl>#icon-1899-C2185B-nodesc-normal</styleUrl>
+      </Pair>
+      <Pair>
+        <key>highlight</key>
+        <styleUrl>#icon-1899-C2185B-nodesc-highlight</styleUrl>
+      </Pair>
+    </StyleMap>
+    <Style id="icon-1899-FF5252-labelson-nodesc">
+      <IconStyle>
+        <scale>1</scale>
+        <Icon>
+          <href>images/icon-10.png</href>
+        </Icon>
+        <hotSpot x="32" xunits="pixels" y="64" yunits="insetPixels"/>
+      </IconStyle>
+      <BalloonStyle>
+        <text><![CDATA[<h3>$[name]</h3>]]></text>
+      </BalloonStyle>
+    </Style>
+    <Style id="icon-1899-FFD600-nodesc-normal">
+      <IconStyle>
+        <scale>1</scale>
+        <Icon>
+          <href>images/icon-11.png</href>
+        </Icon>
+        <hotSpot x="32" xunits="pixels" y="64" yunits="insetPixels"/>
+      </IconStyle>
+      <LabelStyle>
+        <scale>0</scale>
+      </LabelStyle>
+      <BalloonStyle>
+        <text><![CDATA[<h3>$[name]</h3>]]></text>
+      </BalloonStyle>
+    </Style>
+    <Style id="icon-1899-FFD600-nodesc-highlight">
+      <IconStyle>
+        <scale>1</scale>
+        <Icon>
+          <href>images/icon-11.png</href>
+        </Icon>
+        <hotSpot x="32" xunits="pixels" y="64" yunits="insetPixels"/>
+      </IconStyle>
+      <LabelStyle>
+        <scale>1</scale>
+      </LabelStyle>
+      <BalloonStyle>
+        <text><![CDATA[<h3>$[name]</h3>]]></text>
+      </BalloonStyle>
+    </Style>
+    <StyleMap id="icon-1899-FFD600-nodesc">
+      <Pair>
+        <key>normal</key>
+        <styleUrl>#icon-1899-FFD600-nodesc-normal</styleUrl>
+      </Pair>
+      <Pair>
+        <key>highlight</key>
+        <styleUrl>#icon-1899-FFD600-nodesc-highlight</styleUrl>
+      </Pair>
+    </StyleMap>
+    <Style id="icon-1899-FFEA00-labelson-nodesc">
+      <IconStyle>
+        <scale>1</scale>
+        <Icon>
+          <href>images/icon-6.png</href>
+        </Icon>
+        <hotSpot x="32" xunits="pixels" y="64" yunits="insetPixels"/>
+      </IconStyle>
+      <BalloonStyle>
+        <text><![CDATA[<h3>$[name]</h3>]]></text>
+      </BalloonStyle>
+    </Style>
+    <Style id="icon-ci-12-nodesc-normal">
+      <IconStyle>
+        <scale>0.7</scale>
+        <Icon>
+          <href>images/icon-12.png</href>
+        </Icon>
+      </IconStyle>
+      <LabelStyle>
+        <scale>0</scale>
+      </LabelStyle>
+      <BalloonStyle>
+        <text><![CDATA[<h3>$[name]</h3>]]></text>
+      </BalloonStyle>
+    </Style>
+    <Style id="icon-ci-12-nodesc-highlight">
+      <IconStyle>
+        <scale>0.7</scale>
+        <Icon>
+          <href>images/icon-12.png</href>
+        </Icon>
+      </IconStyle>
+      <LabelStyle>
+        <scale>0.7</scale>
+      </LabelStyle>
+      <BalloonStyle>
+        <text><![CDATA[<h3>$[name]</h3>]]></text>
+      </BalloonStyle>
+    </Style>
+    <StyleMap id="icon-ci-12-nodesc">
+      <Pair>
+        <key>normal</key>
+        <styleUrl>#icon-ci-12-nodesc-normal</styleUrl>
+      </Pair>
+      <Pair>
+        <key>highlight</key>
+        <styleUrl>#icon-ci-12-nodesc-highlight</styleUrl>
+      </Pair>
+    </StyleMap>
+    <Style id="icon-ci-13-nodesc-normal">
+      <IconStyle>
+        <scale>0.7</scale>
+        <Icon>
+          <href>images/icon-13.png</href>
+        </Icon>
+      </IconStyle>
+      <LabelStyle>
+        <scale>0</scale>
+      </LabelStyle>
+      <BalloonStyle>
+        <text><![CDATA[<h3>$[name]</h3>]]></text>
+      </BalloonStyle>
+    </Style>
+    <Style id="icon-ci-13-nodesc-highlight">
+      <IconStyle>
+        <scale>0.7</scale>
+        <Icon>
+          <href>images/icon-13.png</href>
+        </Icon>
+      </IconStyle>
+      <LabelStyle>
+        <scale>0.7</scale>
+      </LabelStyle>
+      <BalloonStyle>
+        <text><![CDATA[<h3>$[name]</h3>]]></text>
+      </BalloonStyle>
+    </Style>
+    <StyleMap id="icon-ci-13-nodesc">
+      <Pair>
+        <key>normal</key>
+        <styleUrl>#icon-ci-13-nodesc-normal</styleUrl>
+      </Pair>
+      <Pair>
+        <key>highlight</key>
+        <styleUrl>#icon-ci-13-nodesc-highlight</styleUrl>
+      </Pair>
+    </StyleMap>
+    <Style id="icon-ci-14-nodesc-normal">
+      <IconStyle>
+        <scale>0.7</scale>
+        <Icon>
+          <href>images/icon-14.png</href>
+        </Icon>
+      </IconStyle>
+      <LabelStyle>
+        <scale>0</scale>
+      </LabelStyle>
+      <BalloonStyle>
+        <text><![CDATA[<h3>$[name]</h3>]]></text>
+      </BalloonStyle>
+    </Style>
+    <Style id="icon-ci-14-nodesc-highlight">
+      <IconStyle>
+        <scale>0.7</scale>
+        <Icon>
+          <href>images/icon-14.png</href>
+        </Icon>
+      </IconStyle>
+      <LabelStyle>
+        <scale>0.7</scale>
+      </LabelStyle>
+      <BalloonStyle>
+        <text><![CDATA[<h3>$[name]</h3>]]></text>
+      </BalloonStyle>
+    </Style>
+    <StyleMap id="icon-ci-14-nodesc">
+      <Pair>
+        <key>normal</key>
+        <styleUrl>#icon-ci-14-nodesc-normal</styleUrl>
+      </Pair>
+      <Pair>
+        <key>highlight</key>
+        <styleUrl>#icon-ci-14-nodesc-highlight</styleUrl>
+      </Pair>
+    </StyleMap>
+    <Style id="icon-ci-15-nodesc-normal">
+      <IconStyle>
+        <scale>0.7</scale>
+        <Icon>
+          <href>images/icon-15.png</href>
+        </Icon>
+      </IconStyle>
+      <LabelStyle>
+        <scale>0</scale>
+      </LabelStyle>
+      <BalloonStyle>
+        <text><![CDATA[<h3>$[name]</h3>]]></text>
+      </BalloonStyle>
+    </Style>
+    <Style id="icon-ci-15-nodesc-highlight">
+      <IconStyle>
+        <scale>0.7</scale>
+        <Icon>
+          <href>images/icon-15.png</href>
+        </Icon>
+      </IconStyle>
+      <LabelStyle>
+        <scale>0.7</scale>
+      </LabelStyle>
+      <BalloonStyle>
+        <text><![CDATA[<h3>$[name]</h3>]]></text>
+      </BalloonStyle>
+    </Style>
+    <StyleMap id="icon-ci-15-nodesc">
+      <Pair>
+        <key>normal</key>
+        <styleUrl>#icon-ci-15-nodesc-normal</styleUrl>
+      </Pair>
+      <Pair>
+        <key>highlight</key>
+        <styleUrl>#icon-ci-15-nodesc-highlight</styleUrl>
+      </Pair>
+    </StyleMap>
+    <Style id="icon-ci-16-nodesc-normal">
+      <IconStyle>
+        <scale>0.7</scale>
+        <Icon>
+          <href>images/icon-16.png</href>
+        </Icon>
+      </IconStyle>
+      <LabelStyle>
+        <scale>0</scale>
+      </LabelStyle>
+      <BalloonStyle>
+        <text><![CDATA[<h3>$[name]</h3>]]></text>
+      </BalloonStyle>
+    </Style>
+    <Style id="icon-ci-16-nodesc-highlight">
+      <IconStyle>
+        <scale>0.7</scale>
+        <Icon>
+          <href>images/icon-16.png</href>
+        </Icon>
+      </IconStyle>
+      <LabelStyle>
+        <scale>0.7</scale>
+      </LabelStyle>
+      <BalloonStyle>
+        <text><![CDATA[<h3>$[name]</h3>]]></text>
+      </BalloonStyle>
+    </Style>
+    <StyleMap id="icon-ci-16-nodesc">
+      <Pair>
+        <key>normal</key>
+        <styleUrl>#icon-ci-16-nodesc-normal</styleUrl>
+      </Pair>
+      <Pair>
+        <key>highlight</key>
+        <styleUrl>#icon-ci-16-nodesc-highlight</styleUrl>
+      </Pair>
+    </StyleMap>
+    <Style id="icon-ci-17-nodesc-normal">
+      <IconStyle>
+        <scale>0.7</scale>
+        <Icon>
+          <href>images/icon-17.png</href>
+        </Icon>
+      </IconStyle>
+      <LabelStyle>
+        <scale>0</scale>
+      </LabelStyle>
+      <BalloonStyle>
+        <text><![CDATA[<h3>$[name]</h3>]]></text>
+      </BalloonStyle>
+    </Style>
+    <Style id="icon-ci-17-nodesc-highlight">
+      <IconStyle>
+        <scale>0.7</scale>
+        <Icon>
+          <href>images/icon-17.png</href>
+        </Icon>
+      </IconStyle>
+      <LabelStyle>
+        <scale>0.7</scale>
+      </LabelStyle>
+      <BalloonStyle>
+        <text><![CDATA[<h3>$[name]</h3>]]></text>
+      </BalloonStyle>
+    </Style>
+    <StyleMap id="icon-ci-17-nodesc">
+      <Pair>
+        <key>normal</key>
+        <styleUrl>#icon-ci-17-nodesc-normal</styleUrl>
+      </Pair>
+      <Pair>
+        <key>highlight</key>
+        <styleUrl>#icon-ci-17-nodesc-highlight</styleUrl>
+      </Pair>
+    </StyleMap>
+    <Style id="icon-ci-18-nodesc-normal">
+      <IconStyle>
+        <scale>0.7</scale>
+        <Icon>
+          <href>images/icon-18.png</href>
+        </Icon>
+      </IconStyle>
+      <LabelStyle>
+        <scale>0</scale>
+      </LabelStyle>
+      <BalloonStyle>
+        <text><![CDATA[<h3>$[name]</h3>]]></text>
+      </BalloonStyle>
+    </Style>
+    <Style id="icon-ci-18-nodesc-highlight">
+      <IconStyle>
+        <scale>0.7</scale>
+        <Icon>
+          <href>images/icon-18.png</href>
+        </Icon>
+      </IconStyle>
+      <LabelStyle>
+        <scale>0.7</scale>
+      </LabelStyle>
+      <BalloonStyle>
+        <text><![CDATA[<h3>$[name]</h3>]]></text>
+      </BalloonStyle>
+    </Style>
+    <StyleMap id="icon-ci-18-nodesc">
+      <Pair>
+        <key>normal</key>
+        <styleUrl>#icon-ci-18-nodesc-normal</styleUrl>
+      </Pair>
+      <Pair>
+        <key>highlight</key>
+        <styleUrl>#icon-ci-18-nodesc-highlight</styleUrl>
+      </Pair>
+    </StyleMap>
+    <Style id="icon-ci-19-nodesc-normal">
+      <IconStyle>
+        <scale>0.7</scale>
+        <Icon>
+          <href>images/icon-19.png</href>
+        </Icon>
+      </IconStyle>
+      <LabelStyle>
+        <scale>0</scale>
+      </LabelStyle>
+      <BalloonStyle>
+        <text><![CDATA[<h3>$[name]</h3>]]></text>
+      </BalloonStyle>
+    </Style>
+    <Style id="icon-ci-19-nodesc-highlight">
+      <IconStyle>
+        <scale>0.7</scale>
+        <Icon>
+          <href>images/icon-19.png</href>
+        </Icon>
+      </IconStyle>
+      <LabelStyle>
+        <scale>0.7</scale>
+      </LabelStyle>
+      <BalloonStyle>
+        <text><![CDATA[<h3>$[name]</h3>]]></text>
+      </BalloonStyle>
+    </Style>
+    <StyleMap id="icon-ci-19-nodesc">
+      <Pair>
+        <key>normal</key>
+        <styleUrl>#icon-ci-19-nodesc-normal</styleUrl>
+      </Pair>
+      <Pair>
+        <key>highlight</key>
+        <styleUrl>#icon-ci-19-nodesc-highlight</styleUrl>
+      </Pair>
+    </StyleMap>
+    <Style id="icon-ci-20-nodesc-normal">
+      <IconStyle>
+        <scale>0.7</scale>
+        <Icon>
+          <href>images/icon-20.png</href>
+        </Icon>
+      </IconStyle>
+      <LabelStyle>
+        <scale>0</scale>
+      </LabelStyle>
+      <BalloonStyle>
+        <text><![CDATA[<h3>$[name]</h3>]]></text>
+      </BalloonStyle>
+    </Style>
+    <Style id="icon-ci-20-nodesc-highlight">
+      <IconStyle>
+        <scale>0.7</scale>
+        <Icon>
+          <href>images/icon-20.png</href>
+        </Icon>
+      </IconStyle>
+      <LabelStyle>
+        <scale>0.7</scale>
+      </LabelStyle>
+      <BalloonStyle>
+        <text><![CDATA[<h3>$[name]</h3>]]></text>
+      </BalloonStyle>
+    </Style>
+    <StyleMap id="icon-ci-20-nodesc">
+      <Pair>
+        <key>normal</key>
+        <styleUrl>#icon-ci-20-nodesc-normal</styleUrl>
+      </Pair>
+      <Pair>
+        <key>highlight</key>
+        <styleUrl>#icon-ci-20-nodesc-highlight</styleUrl>
+      </Pair>
+    </StyleMap>
+    <Style id="line-1267FF-5000-nodesc-normal">
+      <LineStyle>
+        <color>ffff6712</color>
+        <width>5</width>
+      </LineStyle>
+      <BalloonStyle>
+        <text><![CDATA[<h3>$[name]</h3>]]></text>
+      </BalloonStyle>
+    </Style>
+    <Style id="line-1267FF-5000-nodesc-highlight">
+      <LineStyle>
+        <color>ffff6712</color>
+        <width>7.5</width>
+      </LineStyle>
+      <BalloonStyle>
+        <text><![CDATA[<h3>$[name]</h3>]]></text>
+      </BalloonStyle>
+    </Style>
+    <StyleMap id="line-1267FF-5000-nodesc">
+      <Pair>
+        <key>normal</key>
+        <styleUrl>#line-1267FF-5000-nodesc-normal</styleUrl>
+      </Pair>
+      <Pair>
+        <key>highlight</key>
+        <styleUrl>#line-1267FF-5000-nodesc-highlight</styleUrl>
+      </Pair>
+    </StyleMap>
+    <Folder>
+      <name>Biratnagar </name>
+      <Placemark>
+        <name>Karki Suppler</name>
+        <description>Gas Store </description>
+        <styleUrl>#icon-1899-0288D1-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            87.278435,26.6758,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name><![CDATA[Neelkantha ghadi & Gas store]]></name>
+        <description>Gas Store </description>
+        <styleUrl>#icon-1899-0288D1-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            87.502686,26.736851,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Bhagat Kirana Pasa</name>
+        <description>Gas Store </description>
+        <styleUrl>#icon-1899-0288D1-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            87.1229919,26.4996952,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Baba Gas Store</name>
+        <description>Gas Store </description>
+        <styleUrl>#icon-1899-0288D1-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            87.2823074,26.463596,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>New Saraswati Kirana Pasal</name>
+        <description>Gas Store </description>
+        <styleUrl>#icon-1899-0288D1-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            87.2667645,26.4091276,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Unique Traders </name>
+        <description>Gas Store </description>
+        <styleUrl>#icon-1899-0288D1-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            87.2761992,26.4642259,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Kanchaneshwor gas Pasal</name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.2779649,26.4868479,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Noudurga Traders</name>
+        <styleUrl>#icon-1899-558B2F-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.2796031,26.4533048,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name><![CDATA[Sahi Kiran & Cold Drinks]]></name>
+        <styleUrl>#icon-1899-0F9D58-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.2815382,26.5407281,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name><![CDATA[Purnima Gr. Store & Gas Supliers,Brt]]></name>
+        <styleUrl>#icon-1899-1A237E-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.2900889,26.4989114,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Shiva Baba Supliers</name>
+        <styleUrl>#icon-1899-795548-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.2925391,26.4613382,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Kenjal Suppliers</name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.2779676,26.4468987,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Puspa Traders</name>
+        <styleUrl>#icon-1899-FFEA00-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.2687933,26.4563413,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Shree 108 Kaalistan Traders</name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.2666851,26.4086406,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Tushar Traders</name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.2740216,26.4442816,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Ram Bista Kirana</name>
+        <styleUrl>#icon-1899-880E4F-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.2838521,26.4829569,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>New Roshika Kirana Pasal</name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.2802942,26.4335186,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Hima Kirana Pasal</name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.2948514,26.5010591,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Abinash Traders</name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.2765737,26.47961,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Subidha Kirana Pasal</name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.2773126,26.4939004,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Asha Jeneral Suppliers</name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.2875017,26.4561798,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Kalpana Enterprises</name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.2818041,26.5074797,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Niharika General Store </name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.189285,26.484918,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Riddhisidhi Traders</name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.2832844,26.441762,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Priya Supplier </name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.2709549,26.4307342,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Om ambey suppliers</name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            86.8838951,26.5510725,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Upendra suppliers</name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.2775327,26.4726721,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>DK suppliers</name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.259185,26.663696,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>shambhunath store/ hanuman ji</name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            86.713035,26.6292506,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Rakesh Kirana </name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.227016,26.582887,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Suraj Kirana </name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            86.5602545,26.6673752,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name><![CDATA[Sahil Traders & suppliers ]]></name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.268166,26.452034,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>jai hanuman traders</name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.1742713,26.6355419,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Surya Gas dealer</name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.4473352,26.4646706,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Baba hardware</name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.1731034,26.7730697,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Rg kirana store </name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.5220292,26.4809696,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Jana priya pustak pasal </name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.4912756,26.4724557,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Niraula Hardware</name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.4953309,26.5262801,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Nikita Suppliers </name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.2453417,26.5768383,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Venus Traders </name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.3911484,26.6682305,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name><![CDATA[shakadeswori hardware & suppliers  ]]></name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            86.7289887,26.4519666,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Kashya Traders </name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.2828822222222,26.6633505555556,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name><![CDATA[R.K&Sons Suppliers]]></name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.2729261111111,26.4677083333333,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Kalwar trader</name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.5502316666667,26.4991966666667,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>shiva baba stationery and gas dealer</name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.5297622222222,26.5221194444444,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>khullal karki kirana pasal </name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.4513011111111,26.6583822222222,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name><![CDATA[Bhattarai  stationary & Ladies corner ]]></name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.348335,26.6614894444444,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Shankar Kirana Pasal</name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.55231,26.52333,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Kashinath Kirana </name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.4174,26.5199,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>shrestha gas pasal </name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.13713,26.7495067,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>baba suppliers </name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.1802833,26.7549933,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Samir Vada pasal </name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.0669,26.8141,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>fuyal kirana pasal </name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.1968,26.6811,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Dilip Cycle store </name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.44146,26.61521,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Thapa gas tatha bhada pasal </name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.4593,26.5583,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Karki Kirana Pasal and Gas Suppliers</name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.2785,26.5018,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Shiv gas dealer </name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.3147,26.4616,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Ghimire Gas and suppliers </name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.289,26.6589,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Gupta hardware</name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.4152528,26.4731746,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Shree Koshi Traders</name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.1379,26.4513,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Shreya kharid bikri kendra </name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.27191,26.59579,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Sanjay General Store </name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.3633,26.4151,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>sangam kirana </name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.2854375,26.6659375,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>chandani kharid bikri Kendra </name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.195594,26.539022,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Fulma enterprises</name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.5497,26.45516,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Sushant madira hotel </name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.61155,26.45352,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>shreya traders </name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.26005,26.4777,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Saptakoshi Suppliers </name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.1550292,26.8279983,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Puja Hardware Store</name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.28725,26.49056,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>shree ram janaki </name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            86.47963,26.71326,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Ashok Suppliers </name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.28891,26.45133,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Ruby Kirana </name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.2803,26.60195,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Baba gas store drop point </name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.29208,26.46008,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Prasiddhi Traders </name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.34725,26.66093,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>New Radha Krishna store  </name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.27622,26.47437,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Asmita Suppliers </name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.4470573,26.6467649,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>New Pathivara </name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.5589254,26.6606381,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Saha Kirana </name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.28029,26.5204,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Quality Hardware </name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.10338,26.46337,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Jaya Ganesh Store</name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.27951,26.53574,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Dikshya Traders</name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.28528,26.47966,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>New Krishna stores</name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.26373,26.4591,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Ushmita Cosmetic</name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.5390113,26.5658796,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Saron Kirana Pasal </name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.30999,26.56483,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Mahalaxmi Suppliers karagar </name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.29635,26.45497,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Kritika suppliers </name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.3775,26.639,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Om gas Traders </name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.27882,26.45658,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Simran Kirana </name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.25127,26.49639,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Sital kirana 1</name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.25765,26.664,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Kabir trade</name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.63796,26.66354,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Jay shree radhee </name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.2958665,26.4423015,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Basundhara kirana pasal </name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.2822084,26.5120639,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name><![CDATA[Upreti& Upreti ]]></name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.28618,26.4486,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Das Guest house and gas shop </name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.26981,26.42466,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Laxmi kirana pasal </name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.293974,26.6644087,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Shree bhawani</name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.2846,26.45612,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Radha Gas dealer</name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.28755,26.45471,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Jay Maa Kali Kirana Pasal</name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.26906,26.51661,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>new dealer nishant </name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.288892,26.424476,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Dorpati traders </name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            86.9136192,26.6191517,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Shree Govinda Gas Dealer </name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.2890472670361,26.3938916508521,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Puja suppliers </name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.27378,26.43731,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name><![CDATA[Karki trader & Suppliers ]]></name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.5808022,26.6729153,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Surya Suppliers </name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.2739791,26.6769082,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>New BR readymade center </name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            86.4772982,26.706126,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>NEW DEALER OUT OF RANGE </name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            86.2121261,26.6611336416449,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>rampur dealer </name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.260615,26.4619,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Shubha Laxmi Kirana Pasal </name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.27312,26.45187,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>pathivara Kirana Brt </name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.2953707,26.4727573,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>sub dealer of FUlma</name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.5801286,26.4875553,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>New dealer kadama </name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.3775147,26.4536674,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>new dewanjung</name>
+        <description>9700502995</description>
+        <styleUrl>#icon-1899-0288D1-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            87.1382383,26.4527807,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>yadav electronics </name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.4912584,26.4633078,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Subedhi Kirana Pasal </name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.3031944444444,26.4555,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>ambari hardware and suppliers</name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.612608,26.4456575,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>New adhikari kirana pasal</name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.2359332,26.4518489,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>New dealer </name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.2576094,26.4918875,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>saraswati traders </name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.2633745,26.6663507,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>arai gas suppliers </name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.243653,26.6554482,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Mayara Kirana pasal</name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.2673089,26.4136497,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Roshni Department</name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.2793272222222,26.5248372222222,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>S.S Traders</name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.2840251,26.4752351,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Susma Traders </name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.3429812,26.6703851,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Al muwaz enterprise </name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.2667569,26.4617183,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>New dealer chittaha </name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.196732,26.5238387,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>baba store katahari</name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.3299861111111,26.4647194444444,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>ghimire kirana and gas -</name>
+        <description>//025874102547/</description>
+        <styleUrl>#icon-1899-0288D1-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            87.2318889,26.6806389,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Point 141</name>
+        <styleUrl>#icon-1899-9C27B0-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.5995336,26.663082,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Baba gas store drop point </name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.2920722,26.4601395,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Baba Gas Store</name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.282432,26.4635846,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Baba Gas Store</name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.282432,26.4635846,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Anil kirana </name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.3031946,26.4554816,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Gupta hardware</name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.4152322,26.4729712,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Shiva Guru</name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            86.50019,26.5533502,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Suraj Kirana </name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            86.5602176,26.6674453,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Shiv Sambu general store</name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            86.5412912,26.6813502,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Ayush Traders </name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            86.5178512,26.5877896,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Ramchowk baba store</name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.3619916666667,26.4694211111111,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Aarti gas pasal</name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.2406402,26.6508698,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>krishna and chakra general store </name>
+        <description>9820706326</description>
+        <styleUrl>#icon-1899-0288D1-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            87.225,26.4826944444444,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Point 141</name>
+        <styleUrl>#icon-1899-9C27B0-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.2715847,26.411317,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Nepaltar sub-division forest office.</name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            86.6072909,26.8840832,0
+          </coordinates>
+        </Point>
+      </Placemark>
+    </Folder>
+    <Folder>
+      <name>Sonapur</name>
+      <Placemark>
+        <name>Suhil Kirana</name>
+        <description>Gas store </description>
+        <styleUrl>#icon-1899-0288D1-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            87.26387,26.591831,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Tarun Store </name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.2785399,26.5708881,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Baba Shiv Jwellery and Gas</name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.5622449,26.5426111,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Chandarika Khadanya pasal</name>
+        <description>new dealer - 9827336868</description>
+        <styleUrl>#icon-1899-0288D1-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            87.2656566,26.6526287,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Narwada kirana store</name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.27571,26.60152,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Machapuchare supplier</name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.28202,26.66729,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Milan Multi </name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.27337,26.62654,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Shree Nischal Kirana</name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.2734255,26.6064313,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Shreya gas sub dealer </name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.27123,26.6026,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Kabita Gas Pasal </name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.22532,26.64886,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Deepesh Cold Store </name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.2794792,26.5773996,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Devendra General </name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.22017,26.62101,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Sagira Kirana</name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.25542,26.59625,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>New anamika kirana</name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.2459495,26.6195387,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Krishna kirana pasal </name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.27269,26.61928,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Milan multi factory </name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.26102,26.6061,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Poudel Suppliers</name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.2835258,26.5718527,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Arun suppliers</name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.2673643,26.5725203,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Manoj Pan Pasal</name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.28155,26.56855,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Annupama kirana pasal </name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.2795747,26.5662547,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Prashan Gas Dealer</name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.2820583333333,26.6255716666667,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Laxmi Aluminium </name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.2846144444444,26.5910488888889,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Usha Traders</name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.2753905555556,26.6032311111111,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Quality foods</name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.2714461111111,26.6428277777778,0
+          </coordinates>
+        </Point>
+      </Placemark>
+    </Folder>
+    <Folder>
+      <name>ITAHARI</name>
+      <Placemark>
+        <name>Aviyanta Gas Suppliers</name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.302832,26.6956938,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name/>
+      </Placemark>
+      <Placemark>
+        <name>ANsu GAs pasal </name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.1491672,26.6024906,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Alisha Kirana </name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.2939404,26.5588616,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Basistha Hamro Variety Store</name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.3034506,26.6580624,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Bhattarai Trade </name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.304988,26.655788,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Jasmine Manakamana Store </name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.2074969,26.6738788,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Gopal Maskey </name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.283754,26.813522,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Aayan Kirana Pasal</name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.2712074,26.6452657,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Gorkha Departmental Store </name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.2719353,26.6725861,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Salina Kira pasal </name>
+        <description>will order at 18th gathey </description>
+        <styleUrl>#icon-1899-0288D1-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            87.2427431,26.6722388,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name><![CDATA[Mamata kirana kharid & bikri ]]></name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.1555059,26.7612,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Kitchen Queen center</name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.447917,26.579292,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>AB Trading House </name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.3691,26.6687,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>K.B Bhattarai</name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.5449,26.6515,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Ramesh Kirana Pasal </name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.29779,26.65354,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>pont of exchange</name>
+        <styleUrl>#icon-1899-C2185B-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.27587,26.60105,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Sigma suppliers</name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.2795254,26.6617005,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>D.N Suppliers </name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.27383,26.70405,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Bikash Traders </name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.06398,26.59954,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Indra Traders</name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.21345,26.67993,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Santosh Kirana </name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.30576,26.61029,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Tarun Gas Center </name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.27363,26.66252,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Sanjeev suppliers</name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.27333,26.65328,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Robin Suppliers </name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.26717,26.65554,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Laxmi Electronics </name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.20628,26.67065,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Sanjay Gas Suppliers</name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.27626,26.66018,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Oasis Center</name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.27528,26.68851,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Kunja kirana </name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.2077979,26.6837601,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>saraswati kirana </name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.26886,26.64554,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Laxmi Gas Pasal </name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.27074,26.6785,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Purwanchal Marketing</name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.27509,26.65652,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>trishana gas suppliers </name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.24698,26.67083,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>okhaldunga Karki </name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.2701184,26.6701658,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Nischal kirana </name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.25528,26.67383,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Sorgaduwari Gas Pasal</name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.30584,26.70165,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Sapkota Kirana suppliers</name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.27097,26.68411,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>jigyasha store</name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.30316,26.65908,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Sital kirana halgada</name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.26293,26.68426,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Jalpa Gas </name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.23921,26.673212,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Sharma SUppliers</name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.2652004,26.6635198,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Shrestha Kirana</name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.33383,26.67844,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>new dealer taltaliya </name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.2961666666667,26.6906388888889,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Kenjal Kirana Pasal</name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.2703,26.6905,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>house of ghimire pakali</name>
+        <styleUrl>#icon-1899-FF5252-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.2617777777778,26.6632777777778,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Punjen Kirana </name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.2617326,26.6637513,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Aarti gas pasal</name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.2406916666667,26.6508883333333,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Durga Kirana </name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.2855144444444,26.6787277777778,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>kosika traders</name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.254913,26.647268,0
+          </coordinates>
+        </Point>
+      </Placemark>
+    </Folder>
+    <Folder>
+      <name>Other</name>
+      <Placemark>
+        <name>pawan free traders </name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.5613868,26.6573285,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Harendra kirana Pasal </name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.204293,26.7175385,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Shree Krishna Traders </name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            86.5887981,26.6547361,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name><![CDATA[M.K. Kirana & General Store ]]></name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            86.5365262,26.6661484,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Shiva Guru</name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            86.500221,26.553342,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Gurash Store </name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.304,26.7964722222222,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Gyanendra General Suppliers (Subidha Gas dealer)</name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            86.7571573,26.5416067,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Surya Electronics</name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.6973602,26.6607356,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>B.k suppliers</name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.7022689,26.6701731,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>pathivara khadena supplies</name>
+        <styleUrl>#icon-1899-880E4F-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.5438093,26.584228,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Laxmi Suppliers</name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.6945901,26.6612628,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>om sahi ganesh</name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            86.7482058,26.5358327,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Aayan Trader</name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.6365671,26.6578482,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Sanchit General</name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.0966149,26.7156853,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Jaleshwor Shiv Gas </name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.102807,26.628396,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Indu Kirana Pasal </name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.2775651,26.524825,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Gas Concern </name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.2770582,26.8131638,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Shiv Sambu general store</name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            86.5411,26.6814,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>shubha laxmi Bhada pasal </name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.31359,27.03149,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>RR suppliers </name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.27,26.47595,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Hamro store</name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.28294,26.68607,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Puskar Traders</name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            86.4824,26.71469,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>New Shrestha karid bikri </name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.17233,26.60197,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Laxmi Kirana </name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.22122,26.68167,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Khushi Trade Center </name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.09546,26.68642,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Shrestha Movie </name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.3432,26.97489,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Jenny Suppliers</name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.43998,26.47344,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Maji Traders </name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.31376,26.52081,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Khanar Pathi Mistiri </name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.27354,26.6375,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>new dealer binod </name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.2454075,26.6110947,0
+          </coordinates>
+        </Point>
+      </Placemark>
+    </Folder>
+    <Folder>
+      <name>Gas</name>
+      <Placemark>
+        <name>maruti gas </name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.2746418,26.588756,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Santosh Patti mistir</name>
+        <styleUrl>#icon-1899-FFD600-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.24083,26.67278,0
+          </coordinates>
+        </Point>
+      </Placemark>
+    </Folder>
+    <Folder>
+      <name>East </name>
+      <Placemark>
+        <name>Chargarey Mart</name>
+        <description>9841178942-ashim Rai</description>
+        <styleUrl>#icon-1899-0288D1-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            87.4460274,26.6438515,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>BN Suppliers </name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.36565,26.66872,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>mina enterprise</name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.54172,26.62159,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Aks market</name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.4031945,26.762272,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Lama</name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.364902,26.742927,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>New Shrestha cold Center </name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.384,26.6702,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Kabita Kirana </name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.59917,26.66419,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Vintuna stores</name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.66191,26.73207,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Mukhtinath Gas suppliers</name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.61382,26.5374,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Dahal Kirana </name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.3851,26.6673,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Aarti kirana pasal</name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.35305,26.6794066666667,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Sushil Readymade</name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.61715,26.51507,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Basnet Traders// pathivara kirana biratchowk</name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.37786,26.66676,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name><![CDATA[New Swastik Pustak & Stationary Suppliers]]></name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.38247,26.66884,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Aarush gas traders </name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.35256,26.47181,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>kamakiya kirana pasal </name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.33682,26.62998,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>shree jay ma laxmi kharid bikri </name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.4133,26.44402,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>parmisha traders </name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.5519,26.5123,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Anjel  traders</name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.35157,26.56222,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Sita Kirana Pasal</name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.3706835,26.6113181,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Mahesh Kirana Pasal</name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.32817,26.51855,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name><![CDATA[Ramchandra Kata Kirana & Cosmetics]]></name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.3678453,26.5856433,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Ananda Brick </name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.45623,26.47693,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Renuka Kirana Pasal</name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.33112,26.60037,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Yes kirana Pasal </name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.269227,26.6055402,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Santosh kirana and kata </name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.3728074,26.6234255,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Purna Gas Pasal</name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.47841,26.71391,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>new dealer </name>
+        <styleUrl>#icon-1899-795548-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            86.5571,26.5790945,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Point 34</name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.3227075,26.6480189,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Anamika suppliers </name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.2967409,26.6591058,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Pathivara Store </name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.6822442,26.660495,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Neelam suppliers </name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.5347237,26.5435616,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Minakshi Rankani Suppliers</name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.3227075,26.6480189,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Subisma Suppliers</name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.3988578,26.6534037,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Bishnu Krishi Upaj </name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.50714,26.58918,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Astalaxmi store </name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.4974716,26.5814858,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Nepal Trade</name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.58849,26.62546,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>shrestha gas suppliers</name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.3381,26.6514,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Thapa Store</name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.4171522222222,26.6589811111111,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Sikshalaya Education Consultancy</name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.5410155555556,26.4847716666667,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name><![CDATA[Ghimire gas  & cold store center ]]></name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.2917877,26.6552997,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Ansu Kirana pasal</name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.5765833333333,26.6824722222222,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>salabey</name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.5150418760414,26.5552107497951,0
+          </coordinates>
+        </Point>
+      </Placemark>
+    </Folder>
+    <Folder>
+      <name>Mountain</name>
+      <Placemark>
+        <name>Shrestha Bhojpure Vada Pasal</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.2709085,27.1410694,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Suman Traders</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.196365,27.318552,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Elisha Suppliers</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.0513641,27.1653951,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Siddha laxmi </name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.3103833,27.2898451,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Prakash Kirana pasal</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.1918944444444,27.3452544444444,0
+          </coordinates>
+        </Point>
+      </Placemark>
+    </Folder>
+    <Folder>
+      <name>West </name>
+      <Placemark>
+        <name>Prakriti General Store </name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.02434,26.7437,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Rekha hotel,kanchanrup</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            86.9108667,26.6298931,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Shristi Traders </name>
+        <description>9842048049</description>
+        <styleUrl>#icon-1899-0288D1</styleUrl>
+        <Point>
+          <coordinates>
+            87.1669444444445,26.5451111111111,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Radha traders</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            86.5840505,26.5750894,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>R.l. Enterprises</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            86.82086,26.64558,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>kharid Bikri bewasai </name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.1871406,26.624212,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Shabiya kirana pasal</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.24708,26.54375,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Awantika General Store</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            86.55947,26.77519,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Khadka Genral Store </name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            86.5732,26.785,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Ayush Traders </name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            86.51795,26.58777,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Anjali Traders </name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            86.5287,26.6423,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Poudel Tradelink</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            86.49068,26.70778,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>A To Z Suppliers</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            86.90514,26.64452,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Khadhka Emporium </name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            86.87837,26.81223,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Jay Ma Kalli </name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            86.85777,26.50816,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>akhileshwor traders </name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            86.89936,26.59522,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>roshini General store </name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            86.7497,26.6256,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Subidha kitchen and gift </name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.16494,26.69426,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Nandita Gas tatha general </name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            86.91347,26.64324,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Krishna emporium </name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            86.9322,26.73725,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Roshan Kirana</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            86.66662,26.63437,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Sudip Kirana Pasal </name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            86.6216,26.6422,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>New Basnet Kirana </name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.22104,26.68217,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>New madeli dealer </name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.2419247,26.616768,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Radhee traders</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            86.69696,26.79118,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Maa general store </name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            86.57122,26.61114,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>R.B Traders</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            86.374345,26.968669,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Jay ma jagadama</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.229092,26.421532,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Lux general Store</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            86.7865,26.6111,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Rupesh Kirana </name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.2252513,26.6853524,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Samir Hotel</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.225777,26.702803,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name><![CDATA[Nilkantha Hardware & suppliers ]]></name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.15866,26.61627,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Sangam Chotu Kirana Pasal</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.19954,26.66597,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>amit kirana pasal </name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            86.6946666666667,26.6294444444444,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Dhakal Kirana pasal </name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.2210448,26.6969097,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Baishanvi General store </name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.14177,26.41783,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name><![CDATA[Ganpati General & Lp Gas Bikri Center]]></name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.18483,26.41506,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Shah Pratik General Store</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.0681,26.643,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>sanju traders </name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.181923,26.650376,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Naman General Store</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.1148667,26.5252964,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>daju bhai traders </name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.2099735,26.4263913,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>kamana traders </name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.1813919,26.6879935,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>hanumannagar sub dealer </name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            86.8247141,26.4992553,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Chaudary Trade and suppliers </name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            86.7510066666667,26.5445383333333,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name><![CDATA[Rekha Hotel & Lodge ]]></name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            86.899475,26.5952544444444,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Kiran Kirana </name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            86.4814983333333,26.7224672222222,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Laxmi Traders </name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            86.8934244444444,26.6476666666667,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Ashok kirana tatha swadeshi kudra pasal</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.3176355,26.6567353,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Monakama bokara</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.098335,26.6012094444444,0
+          </coordinates>
+        </Point>
+      </Placemark>
+    </Folder>
+    <Folder>
+      <name>new dealers </name>
+      <Placemark>
+        <name>new dealer </name>
+        <styleUrl>#icon-1899-880E4F-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.2785326,26.49697,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>new dealer </name>
+        <styleUrl>#icon-1899-880E4F-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.2728146,26.5997759,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>new dealer 9842162033</name>
+        <styleUrl>#icon-1899-880E4F-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.5122518,26.5661504,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>sukuna school new dealer </name>
+        <styleUrl>#icon-1899-880E4F-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.3890980420937,26.6704784438428,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>new dealer </name>
+        <styleUrl>#icon-1899-880E4F-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.146944,26.480258,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>new dealer panmara</name>
+        <styleUrl>#icon-1899-880E4F-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.3200933,26.7776429,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>new dealer</name>
+        <styleUrl>#icon-1899-880E4F-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.2997365,26.5786958,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Point 17</name>
+        <styleUrl>#icon-1899-880E4F-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.5080323,26.7558598,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>new dealer kroshin chaudary - 9810414134</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.2821111111111,26.6256666666667,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Point 18</name>
+        <styleUrl>#icon-1899-880E4F-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.2807208,26.5717112,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>New Dealer</name>
+        <styleUrl>#icon-1899-880E4F-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.2611544,26.6730523,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Point 19</name>
+        <styleUrl>#icon-1899-880E4F-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.3729851,26.6695553,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>New Dealer </name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.3908333,26.7392839,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>new Dealer </name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.1582036,26.7804342,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>new dealer samidhan chowk </name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.2771868,26.639854,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>New dealer BFM</name>
+        <description>9862053617</description>
+        <styleUrl>#icon-1899-880E4F</styleUrl>
+        <Point>
+          <coordinates>
+            87.2736944444444,26.4628333333333,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>new dealeer</name>
+        <description>9810124207</description>
+        <styleUrl>#icon-1899-880E4F</styleUrl>
+        <Point>
+          <coordinates>
+            87.2337397842152,26.6953897527027,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>New Dealer - ghimire </name>
+        <styleUrl>#icon-1899-C2185B-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.3797486,26.6731277,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>new dealer </name>
+        <description>9807791022- 500 qty</description>
+        <styleUrl>#icon-1899-880E4F</styleUrl>
+        <Point>
+          <coordinates>
+            86.3331905,26.6242166,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>new dealaer rajeshwori mandel </name>
+        <description>9852056515,9807065215</description>
+        <styleUrl>#icon-1899-880E4F</styleUrl>
+        <Point>
+          <coordinates>
+            87.283329,26.5648487,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>new dealer - 9815317473</name>
+        <styleUrl>#icon-1899-880E4F-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.3257313423294,26.4656760821265,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>new dealer- 980-5956720</name>
+        <description>Shyam Kumar shah - 125qty </description>
+        <styleUrl>#icon-1899-880E4F</styleUrl>
+        <Point>
+          <coordinates>
+            86.5305833333333,26.5832222222222,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>new dealer -9801566717</name>
+        <styleUrl>#icon-1899-880E4F-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            86.7569853,26.6251726,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Point 25</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.2719185,26.5708878,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>new dealer - sushant baskota </name>
+        <description>9811374459</description>
+        <styleUrl>#icon-1899-880E4F</styleUrl>
+        <Point>
+          <coordinates>
+            87.261927,26.6750137,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>new dealer </name>
+        <description>+977 981-9050463</description>
+        <styleUrl>#icon-1899-880E4F</styleUrl>
+        <Point>
+          <coordinates>
+            87.1597971865065,26.4483007355316,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>new dealer </name>
+        <styleUrl>#icon-1899-880E4F-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            86.4867296,26.7105918,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>new dealer duhabi</name>
+        <description>9767489050</description>
+        <styleUrl>#icon-1899-0288D1</styleUrl>
+        <Point>
+          <coordinates>
+            87.281579,26.5718228,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>new dealer </name>
+        <description>9823007955</description>
+        <styleUrl>#icon-1899-880E4F</styleUrl>
+        <Point>
+          <coordinates>
+            87.322662,26.768566,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>New Dealer </name>
+        <description>9816919170</description>
+        <styleUrl>#icon-1899-880E4F</styleUrl>
+        <Point>
+          <coordinates>
+            87.2763223,26.6937756,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>New Dealer - fuglung tapu </name>
+        <description>9763749565</description>
+        <styleUrl>#icon-1899-880E4F</styleUrl>
+        <Point>
+          <coordinates>
+            87.3338611111111,26.9782777777778,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>new dealer </name>
+        <description>9815963257- sulendra oli </description>
+        <styleUrl>#icon-1899-880E4F</styleUrl>
+        <Point>
+          <coordinates>
+            87.2854896,26.681613,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>new dealer </name>
+        <description>- saroj mehat - 9802761320</description>
+        <styleUrl>#icon-1899-880E4F</styleUrl>
+        <Point>
+          <coordinates>
+            87.1678826,26.4441757,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>new dealer </name>
+        <description>lalvitti </description>
+        <styleUrl>#icon-1899-C2185B</styleUrl>
+        <Point>
+          <coordinates>
+            87.3876388888889,26.6624722222222,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>new dealer </name>
+        <description>9841518750</description>
+        <styleUrl>#icon-1899-880E4F</styleUrl>
+        <Point>
+          <coordinates>
+            86.871851,26.55077,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>New dealer - niraj shah</name>
+        <description>raja biratchowk </description>
+        <styleUrl>#icon-1899-880E4F</styleUrl>
+        <Point>
+          <coordinates>
+            87.2813611111111,26.3978888888889,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>new dealer </name>
+        <description>9825139598</description>
+        <styleUrl>#icon-1899-880E4F</styleUrl>
+        <Point>
+          <coordinates>
+            86.9893611111111,26.8088611111111,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>new dealer</name>
+        <description>9819736848</description>
+        <styleUrl>#icon-1899-880E4F</styleUrl>
+        <Point>
+          <coordinates>
+            86.544015,26.63182,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Point 41</name>
+        <description>9804312915</description>
+        <styleUrl>#icon-1899-880E4F</styleUrl>
+        <Point>
+          <coordinates>
+            87.2720354,26.4294101,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>new dealer </name>
+        <description>9821721095</description>
+        <styleUrl>#icon-1899-0288D1</styleUrl>
+        <Point>
+          <coordinates>
+            86.5263055555556,26.6939166666667,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>new dealer - Sahakari santha</name>
+        <description>9852835451- 350 qty </description>
+        <styleUrl>#icon-1899-880E4F</styleUrl>
+        <Point>
+          <coordinates>
+            86.9358163,26.735537,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>new dealer</name>
+        <description>9848313845</description>
+        <styleUrl>#icon-1899-880E4F</styleUrl>
+        <Point>
+          <coordinates>
+            87.3304722222222,26.6618333333333,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Point 44-asif </name>
+        <description>9802297616</description>
+        <styleUrl>#icon-1899-880E4F</styleUrl>
+        <Point>
+          <coordinates>
+            87.271364,26.3952919,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Point 45</name>
+        <styleUrl>#icon-1899-880E4F-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.2929094,26.8047136,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>new dealer - i went to see </name>
+        <styleUrl>#icon-1899-880E4F-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.266465,26.673993,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>new dealer - Nitesh Shah</name>
+        <description>9819349007</description>
+        <styleUrl>#icon-1899-880E4F</styleUrl>
+        <Point>
+          <coordinates>
+            87.3353222,26.425695,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Unique Medical College</name>
+        <description>9814777698</description>
+        <styleUrl>#icon-1899-880E4F</styleUrl>
+        <Point>
+          <coordinates>
+            86.7495218,26.5414256,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>new dealer</name>
+        <description>9804982805</description>
+        <styleUrl>#icon-1899-880E4F</styleUrl>
+        <Point>
+          <coordinates>
+            87.710365,26.467005,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>new dealer </name>
+        <description>9743846606</description>
+        <styleUrl>#icon-1899-880E4F</styleUrl>
+        <Point>
+          <coordinates>
+            87.2916944444444,26.7066388888889,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name><![CDATA[26°31'26.1"N 87°06'24.1"E]]></name>
+        <styleUrl>#icon-1899-880E4F-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.1066944444444,26.5239166666667,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>26.663315, 87.310768</name>
+        <description>9807364294 --150qty  Lal ram chaudhary </description>
+        <styleUrl>#icon-1899-880E4F</styleUrl>
+        <Point>
+          <coordinates>
+            87.310768,26.663315,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>26.674404, 87.266877</name>
+        <description>9819373948- Dev bhadur Rai - already doing cylinder business -150 qty</description>
+        <styleUrl>#icon-1899-880E4F</styleUrl>
+        <Point>
+          <coordinates>
+            87.266877,26.674404,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>new dealer </name>
+        <description>9852058908 - 150qty </description>
+        <styleUrl>#icon-1899-880E4F</styleUrl>
+        <Point>
+          <coordinates>
+            87.2894615,26.4478169,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>new Dealer </name>
+        <description>9702043765- 100 qty </description>
+        <styleUrl>#icon-1899-880E4F</styleUrl>
+        <Point>
+          <coordinates>
+            87.3142777777778,26.3774166666667,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>New dealer </name>
+        <description>9815366414- than kumari </description>
+        <styleUrl>#icon-1899-880E4F</styleUrl>
+        <Point>
+          <coordinates>
+            87.2801929,26.6592211,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>26.500994, 87.273804</name>
+        <description>9800969848- 150qty</description>
+        <styleUrl>#icon-1899-880E4F</styleUrl>
+        <Point>
+          <coordinates>
+            87.273804,26.500994,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>new dealer </name>
+        <styleUrl>#icon-1899-880E4F-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.2208238,26.6835911,0
+          </coordinates>
+        </Point>
+      </Placemark>
+    </Folder>
+    <Folder>
+      <name>Directions from maruti gas  to maruti gas </name>
+      <Placemark>
+        <name>Directions from maruti gas  to maruti gas </name>
+        <styleUrl>#line-1267FF-5000-nodesc</styleUrl>
+        <LineString>
+          <tessellate>1</tessellate>
+          <coordinates>
+            87.27464,26.58874,0
+            87.27503,26.58865,0
+            87.27793,26.5888,0
+            87.27794,26.58878,0
+            87.27845,26.58704,0
+            87.27847,26.587,0
+            87.279,26.58509,0
+            87.27907,26.5846,0
+            87.27909,26.58435,0
+            87.27909,26.58402,0
+            87.27922,26.58219,0
+            87.27927,26.58172,0
+            87.27951,26.57845,0
+            87.27951,26.57834,0
+            87.27962,26.57707,0
+            87.27965,26.57687,0
+            87.27968,26.57649,0
+            87.27969,26.57593,0
+            87.27975,26.57463,0
+            87.27971,26.57409,0
+            87.27957,26.57317,0
+            87.2793,26.57173,0
+            87.27926,26.5714,0
+            87.27926,26.57097,0
+            87.27935,26.57067,0
+            87.27975,26.56904,0
+            87.27983,26.56865,0
+            87.28049,26.56614,0
+            87.28054,26.56588,0
+            87.28056,26.56573,0
+            87.28058,26.56535,0
+            87.28054,26.56488,0
+            87.28052,26.56482,0
+            87.28051,26.56469,0
+            87.28013,26.56297,0
+            87.27993,26.56219,0
+            87.27992,26.56217,0
+            87.2799,26.56206,0
+            87.27976,26.5615,0
+            87.27975,26.561,0
+            87.27974,26.56089,0
+            87.27968,26.56057,0
+            87.27961,26.56007,0
+            87.27934,26.55849,0
+            87.27931,26.55822,0
+            87.2793,26.55794,0
+            87.27931,26.55782,0
+            87.27936,26.55754,0
+            87.27959,26.55693,0
+            87.27994,26.55628,0
+            87.2812,26.55416,0
+            87.2813,26.55392,0
+            87.28156,26.55403,0
+            87.28278,26.55462,0
+            87.28309,26.5548,0
+            87.28309,26.55481,0
+            87.28385,26.5554,0
+            87.28408,26.5556,0
+            87.28635,26.55742,0
+            87.28664,26.55768,0
+            87.28741,26.55832,0
+            87.28765,26.55843,0
+            87.28774,26.55844,0
+            87.2879,26.55847,0
+            87.28816,26.5585,0
+            87.28852,26.55848,0
+            87.29038,26.55824,0
+            87.29123,26.55809,0
+            87.29183,26.55802,0
+            87.29198,26.55803,0
+            87.29212,26.55808,0
+            87.29376,26.55899,0
+            87.29434,26.55893,0
+            87.2949,26.55884,0
+            87.2959,26.55861,0
+            87.29668,26.55851,0
+            87.29712,26.55849,0
+            87.29814,26.55835,0
+            87.29842,26.55833,0
+            87.2986,26.5583,0
+            87.29877,26.55824,0
+            87.29917,26.55804,0
+            87.29932,26.55799,0
+            87.29965,26.55793,0
+            87.29986,26.55785,0
+            87.30019,26.55768,0
+            87.30031,26.55764,0
+            87.30046,26.55764,0
+            87.30078,26.5576,0
+            87.30128,26.55751,0
+            87.30184,26.55745,0
+            87.3024,26.55743,0
+            87.30297,26.55738,0
+            87.30314,26.55738,0
+            87.3043,26.5572,0
+            87.30433,26.5572,0
+            87.3044,26.55718,0
+            87.30467,26.55713,0
+            87.30539,26.55707,0
+            87.30548,26.55705,0
+            87.30556,26.55702,0
+            87.30564,26.55697,0
+            87.30591,26.55669,0
+            87.30643,26.55607,0
+            87.30651,26.55602,0
+            87.30654,26.55601,0
+            87.30657,26.55601,0
+            87.3066,26.556,0
+            87.30678,26.556,0
+            87.30738,26.55592,0
+            87.30736,26.55578,0
+            87.30727,26.55538,0
+            87.30716,26.55504,0
+            87.30709,26.55473,0
+            87.30706,26.55431,0
+            87.30707,26.55428,0
+            87.30714,26.55393,0
+            87.30713,26.55374,0
+            87.30711,26.55363,0
+            87.30708,26.55333,0
+            87.30709,26.55324,0
+            87.3071,26.55322,0
+            87.3071,26.55321,0
+            87.30712,26.55317,0
+            87.30714,26.55316,0
+            87.30716,26.55314,0
+            87.30719,26.55314,0
+            87.30728,26.55311,0
+            87.3077,26.55303,0
+            87.30828,26.55295,0
+            87.30829,26.55294,0
+            87.30831,26.55293,0
+            87.30832,26.55292,0
+            87.30833,26.55292,0
+            87.30834,26.5529,0
+            87.30835,26.55289,0
+            87.30837,26.55284,0
+            87.30831,26.55241,0
+            87.3083,26.55206,0
+            87.30832,26.55185,0
+            87.30833,26.5518,0
+            87.30834,26.5517,0
+            87.30834,26.55162,0
+            87.30833,26.55152,0
+            87.30832,26.55094,0
+            87.30833,26.5509,0
+            87.30833,26.55038,0
+            87.30831,26.55018,0
+            87.30822,26.54968,0
+            87.30821,26.54965,0
+            87.30856,26.54951,0
+            87.30881,26.54945,0
+            87.30894,26.54943,0
+            87.30914,26.54942,0
+            87.30976,26.5495,0
+            87.31038,26.54954,0
+            87.31052,26.54954,0
+            87.31098,26.5496,0
+            87.31204,26.5497,0
+            87.31257,26.54977,0
+            87.31267,26.54977,0
+            87.31294,26.54973,0
+            87.31297,26.54973,0
+            87.31356,26.54964,0
+            87.31376,26.54959,0
+            87.3137,26.54938,0
+            87.31355,26.549,0
+            87.31353,26.5489,0
+            87.31349,26.54841,0
+            87.31345,26.5482,0
+            87.31341,26.54779,0
+            87.31341,26.5474,0
+            87.31392,26.5473,0
+            87.31543,26.54695,0
+            87.31614,26.54676,0
+            87.31644,26.54673,0
+            87.31675,26.54673,0
+            87.31688,26.54672,0
+            87.31706,26.54669,0
+            87.31713,26.54663,0
+            87.31724,26.54656,0
+            87.31746,26.54646,0
+            87.3176,26.54635,0
+            87.31762,26.5463,0
+            87.31769,26.54617,0
+            87.31773,26.54603,0
+            87.31776,26.54589,0
+            87.31776,26.54579,0
+            87.31774,26.54555,0
+            87.31775,26.54526,0
+            87.31783,26.54486,0
+            87.31793,26.54465,0
+            87.31795,26.54459,0
+            87.31797,26.54455,0
+            87.31802,26.5444,0
+            87.31809,26.5439,0
+            87.31813,26.5437,0
+            87.31818,26.54354,0
+            87.31818,26.54353,0
+            87.31825,26.54317,0
+            87.31829,26.54255,0
+            87.31831,26.54242,0
+            87.31834,26.54235,0
+            87.31835,26.54226,0
+            87.31837,26.54216,0
+            87.31838,26.54186,0
+            87.3184,26.54179,0
+            87.31842,26.54174,0
+            87.31848,26.54168,0
+            87.31855,26.54164,0
+            87.31868,26.54159,0
+            87.31878,26.54157,0
+            87.31887,26.54154,0
+            87.31921,26.5415,0
+            87.31969,26.54135,0
+            87.3202,26.54116,0
+            87.32042,26.54103,0
+            87.32051,26.541,0
+            87.32063,26.54097,0
+            87.32099,26.54093,0
+            87.32122,26.54089,0
+            87.32196,26.54082,0
+            87.32359,26.54048,0
+            87.32393,26.54037,0
+            87.32417,26.54024,0
+            87.32427,26.54016,0
+            87.32437,26.54006,0
+            87.32444,26.53997,0
+            87.32448,26.53993,0
+            87.32456,26.53987,0
+            87.32462,26.53985,0
+            87.32473,26.53987,0
+            87.32488,26.53992,0
+            87.32497,26.53996,0
+            87.32509,26.54003,0
+            87.32516,26.54011,0
+            87.32522,26.5402,0
+            87.32518,26.54034,0
+            87.32531,26.54038,0
+            87.32543,26.5404,0
+            87.32557,26.54041,0
+            87.32578,26.54041,0
+            87.32782,26.54029,0
+            87.32876,26.54026,0
+            87.32887,26.54023,0
+            87.32956,26.5401,0
+            87.33027,26.54,0
+            87.3305,26.53995,0
+            87.3307,26.53987,0
+            87.33181,26.53959,0
+            87.33192,26.53957,0
+            87.3326,26.5394,0
+            87.33273,26.53938,0
+            87.33279,26.53938,0
+            87.33285,26.53939,0
+            87.33292,26.53939,0
+            87.33299,26.5394,0
+            87.33324,26.53937,0
+            87.33342,26.53931,0
+            87.33355,26.53925,0
+            87.33384,26.53918,0
+            87.33454,26.5391,0
+            87.33475,26.53906,0
+            87.33482,26.53904,0
+            87.33517,26.53889,0
+            87.33543,26.53884,0
+            87.33559,26.53884,0
+            87.33567,26.53883,0
+            87.3357,26.53883,0
+            87.33595,26.53878,0
+            87.33603,26.53878,0
+            87.33612,26.53882,0
+            87.33624,26.53889,0
+            87.33631,26.53889,0
+            87.33665,26.53885,0
+            87.33699,26.53877,0
+            87.33688,26.53846,0
+            87.33634,26.53657,0
+            87.33603,26.53564,0
+            87.33435,26.52996,0
+            87.3343,26.52983,0
+            87.33426,26.5297,0
+            87.33421,26.52957,0
+            87.33404,26.52927,0
+            87.33393,26.52914,0
+            87.33381,26.52898,0
+            87.33364,26.52869,0
+            87.33359,26.52856,0
+            87.33336,26.52781,0
+            87.33319,26.52697,0
+            87.33312,26.52655,0
+            87.3329,26.52548,0
+            87.33278,26.52501,0
+            87.33272,26.5247,0
+            87.33266,26.52448,0
+            87.33257,26.52425,0
+            87.33146,26.5226,0
+            87.33139,26.52248,0
+            87.33129,26.52235,0
+            87.33098,26.52188,0
+            87.33063,26.52141,0
+            87.32889,26.51879,0
+            87.32878,26.51868,0
+            87.32868,26.51861,0
+            87.32779,26.51818,0
+            87.32749,26.518,0
+            87.32746,26.51807,0
+            87.32835,26.51855,0
+            87.3284,26.51848,0
+            87.32779,26.51818,0
+            87.32749,26.518,0
+            87.32728,26.51786,0
+            87.32723,26.51784,0
+            87.32715,26.51779,0
+            87.32703,26.51774,0
+            87.32693,26.51771,0
+            87.32673,26.51762,0
+            87.3249,26.51651,0
+            87.32417,26.5161,0
+            87.3234,26.51563,0
+            87.31888,26.51321,0
+            87.31611,26.51181,0
+            87.31158,26.50939,0
+            87.31084,26.50897,0
+            87.31049,26.50879,0
+            87.30969,26.50833,0
+            87.30737,26.50712,0
+            87.3053,26.50613,0
+            87.30467,26.50585,0
+            87.30413,26.50557,0
+            87.30065,26.50393,0
+            87.30064,26.50393,0
+            87.29993,26.50356,0
+            87.29831,26.50278,0
+            87.29828,26.50276,0
+            87.29435,26.50088,0
+            87.29332,26.50047,0
+            87.29264,26.50029,0
+            87.29239,26.50024,0
+            87.2923,26.50023,0
+            87.29159,26.50007,0
+            87.29047,26.49976,0
+            87.29,26.49957,0
+            87.29,26.49955,0
+            87.28999,26.49955,0
+            87.28999,26.49954,0
+            87.28998,26.49954,0
+            87.28998,26.49953,0
+            87.28997,26.49953,0
+            87.28997,26.49952,0
+            87.28995,26.49952,0
+            87.28995,26.49951,0
+            87.28991,26.49951,0
+            87.2899,26.49952,0
+            87.28988,26.49952,0
+            87.28988,26.49953,0
+            87.28987,26.49953,0
+            87.28987,26.49954,0
+            87.28986,26.49954,0
+            87.28986,26.49955,0
+            87.28985,26.49955,0
+            87.28985,26.4996,0
+            87.2898,26.49968,0
+            87.28973,26.49989,0
+            87.28968,26.50016,0
+            87.28962,26.50035,0
+            87.28962,26.50039,0
+            87.2896,26.50048,0
+            87.28951,26.50061,0
+            87.28951,26.50062,0
+            87.28944,26.50073,0
+            87.28934,26.50086,0
+            87.28904,26.50121,0
+            87.28851,26.50192,0
+            87.28824,26.50187,0
+            87.28799,26.50186,0
+            87.28764,26.5018,0
+            87.28747,26.50175,0
+            87.2872,26.50173,0
+            87.28678,26.50165,0
+            87.28668,26.50161,0
+            87.28655,26.50158,0
+            87.28646,26.50155,0
+            87.28561,26.5012,0
+            87.2852,26.50109,0
+            87.28509,26.50107,0
+            87.28497,26.50107,0
+            87.28362,26.50121,0
+            87.28345,26.50125,0
+            87.28302,26.50125,0
+            87.28292,26.50126,0
+            87.28285,26.50128,0
+            87.28282,26.50128,0
+            87.28258,26.50134,0
+            87.28236,26.50142,0
+            87.28184,26.50157,0
+            87.28091,26.5018,0
+            87.28041,26.50188,0
+            87.28094,26.5042,0
+            87.28104,26.50457,0
+            87.28109,26.50464,0
+            87.28182,26.50776,0
+            87.2819,26.5082,0
+            87.28195,26.50858,0
+            87.28195,26.50862,0
+            87.28198,26.50889,0
+            87.28199,26.50931,0
+            87.282,26.50942,0
+            87.28198,26.51008,0
+            87.28186,26.51078,0
+            87.28155,26.51215,0
+            87.28141,26.51287,0
+            87.28135,26.51325,0
+            87.28083,26.51588,0
+            87.28078,26.51608,0
+            87.28075,26.51629,0
+            87.28059,26.5171,0
+            87.28051,26.51765,0
+            87.2805,26.51769,0
+            87.28049,26.51771,0
+            87.28011,26.51957,0
+            87.28009,26.51962,0
+            87.28009,26.51965,0
+            87.27995,26.52047,0
+            87.27993,26.52065,0
+            87.27961,26.52242,0
+            87.27954,26.52272,0
+            87.27927,26.52428,0
+            87.27927,26.5243,0
+            87.27903,26.5255,0
+            87.2787,26.52735,0
+            87.27866,26.52766,0
+            87.27867,26.52846,0
+            87.27873,26.52977,0
+            87.27873,26.53,0
+            87.27878,26.53032,0
+            87.27887,26.53065,0
+            87.27965,26.53309,0
+            87.27978,26.53357,0
+            87.28014,26.53549,0
+            87.28162,26.54272,0
+            87.28234,26.54686,0
+            87.28252,26.54744,0
+            87.28245,26.54755,0
+            87.28284,26.54916,0
+            87.28295,26.54945,0
+            87.28302,26.54955,0
+            87.28299,26.55043,0
+            87.28295,26.55064,0
+            87.28287,26.55094,0
+            87.28271,26.55138,0
+            87.28249,26.55181,0
+            87.28238,26.552,0
+            87.28232,26.55213,0
+            87.28181,26.55305,0
+            87.28154,26.55349,0
+            87.2813,26.55392,0
+            87.2812,26.55416,0
+            87.27994,26.55628,0
+            87.27959,26.55693,0
+            87.27936,26.55754,0
+            87.27931,26.55782,0
+            87.2793,26.55794,0
+            87.27931,26.55822,0
+            87.27934,26.55849,0
+            87.27961,26.56007,0
+            87.27968,26.56057,0
+            87.27974,26.56089,0
+            87.27975,26.561,0
+            87.27976,26.5615,0
+            87.2799,26.56206,0
+            87.27992,26.56217,0
+            87.27993,26.56219,0
+            87.28013,26.56297,0
+            87.28051,26.56469,0
+            87.28052,26.56482,0
+            87.28054,26.56488,0
+            87.28058,26.56535,0
+            87.28056,26.56573,0
+            87.28054,26.56588,0
+            87.28049,26.56614,0
+            87.27983,26.56865,0
+            87.27975,26.56904,0
+            87.27935,26.57067,0
+            87.27926,26.57097,0
+            87.27926,26.5714,0
+            87.2793,26.57173,0
+            87.27957,26.57317,0
+            87.27971,26.57409,0
+            87.27975,26.57463,0
+            87.27968,26.57649,0
+            87.27965,26.57687,0
+            87.27962,26.57707,0
+            87.27951,26.57834,0
+            87.27951,26.57845,0
+            87.27927,26.58172,0
+            87.27922,26.58219,0
+            87.27909,26.58402,0
+            87.27909,26.58435,0
+            87.27907,26.5846,0
+            87.279,26.58509,0
+            87.27847,26.587,0
+            87.27845,26.58704,0
+            87.27794,26.58878,0
+            87.27793,26.5888,0
+            87.27503,26.58865,0
+            87.27464,26.58874,0
+          </coordinates>
+        </LineString>
+      </Placemark>
+      <Placemark>
+        <name>maruti gas </name>
+        <styleUrl>#icon-ci-12-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.2746376,26.5887411,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Thapa Store</name>
+        <styleUrl>#icon-ci-13-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.4171539,26.659016,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Chargarey Mart</name>
+        <styleUrl>#icon-ci-14-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.4460139,26.6437489,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Kitchen Queen center</name>
+        <styleUrl>#icon-ci-15-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.4477001,26.5792774,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Thapa gas tatha bhada pasal </name>
+        <styleUrl>#icon-ci-16-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.4593002,26.5582964,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Kashinath Kirana </name>
+        <styleUrl>#icon-ci-17-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.4176076,26.5196943,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>maruti gas </name>
+        <styleUrl>#icon-ci-18-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.2746376,26.5887411,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Alisha Kirana </name>
+        <styleUrl>#icon-ci-19-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.2939542,26.5589688,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Mahesh Kirana Pasal</name>
+        <styleUrl>#icon-ci-20-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            87.3282182,26.5184769,0
+          </coordinates>
+        </Point>
+      </Placemark>
+    </Folder>
+  </Document>
+</kml>
