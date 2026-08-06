@@ -199,7 +199,8 @@ of it reached the map, because nobody has linked them yet.
 
 - [ ] Homepage renders the clustered map; zooming in splits the clusters.
 - [ ] Dealer count in the header reads **390**.
-- [ ] `/api/dealers` returns `{"count": …}` for the dealers currently holding stock.
+- [ ] `/api/dealers` returns `{"count": 390, …}` — the feed carries the whole network;
+      hiding out-of-stock dealers happens in the UI, not in the query.
 - [ ] `/admin` redirects to `/admin/login` when signed out.
 - [ ] Login works; a wrong password gives a generic error.
 - [ ] Updating one dealer's stock to 120 turns its pin **green** on the public map after
