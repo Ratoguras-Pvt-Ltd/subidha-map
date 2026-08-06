@@ -223,9 +223,8 @@ nothing to sell bury the handful that can actually help. The rule is `hasStock()
 `src/lib/stock.ts`, applied once in `DealerExplorer` so the map and the list can never
 disagree.
 
-They are not lost: the header still reports the full **390-dealer** network, staff see
-every dealer in the admin dashboard, and `/api/dealers` returns all of them with their
-quantities.
+They are not lost: the header still reports the full **390-dealer** network, and staff
+see every dealer in the admin dashboard.
 
 Each pin prints its cylinder count, abbreviated past a thousand (`1450` → `1.4k`), so
 the map answers "how many, and where?" without a click.

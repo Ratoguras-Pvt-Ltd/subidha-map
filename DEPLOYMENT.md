@@ -125,8 +125,7 @@ curl -X POST https://your-domain.com/api/cron/reset-stock \
 
 - [ ] Homepage renders the clustered map; zooming in splits the clusters.
 - [ ] Dealer count in the header reads **390**.
-- [ ] `/api/dealers` returns `{"count": 390, …}` — the feed carries the whole network;
-      hiding out-of-stock dealers happens in the UI, not in the query.
+- [ ] `/api/dealers` returns **401** when signed out, and the full network when signed in.
 - [ ] `/admin` redirects to `/admin/login` when signed out.
 - [ ] Login works; a wrong password gives a generic error.
 - [ ] Updating one dealer's stock to 120 turns its pin **green** on the public map after
