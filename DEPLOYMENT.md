@@ -1,11 +1,10 @@
 # Deploying to Vercel
 
-Written for the **Hobby (free)** plan, which shapes two decisions you will see below:
-only one cron job runs on Vercel, and the hourly ERP sync runs from GitHub Actions
-instead.
+Written for the **Hobby (free)** plan, which allows a single cron job — spent on the
+nightly stock reset.
 
 Follow the steps in order. Steps 1–4 get the site up; step 5 puts the dealers in the
-database; step 6 is only needed once the ERP feed exists.
+database; step 6 sets up the nightly reset.
 
 ---
 
@@ -61,8 +60,6 @@ both connection strings, and set them as env vars.
 | `NEXT_PUBLIC_SITE_URL` | deploy | Final public URL. Feeds canonical tags, OG images and the sitemap, so a placeholder here ships wrong metadata |
 | `ADMIN_NAME` / `ADMIN_EMAIL` / `ADMIN_PASSWORD` | `npm run seed` | Password **12+ characters**; the seed script refuses anything shorter or obviously placeholder |
 | `GEOCODE_CONTACT` | `npm run import` | Contact address for the Nominatim `User-Agent`, required by its usage policy |
-| `ERP_FEED_URL` | later | `https://marutigas.ratoguras.com/api/dealer-stock/today`. Leave unset for now |
-| `ERP_FEED_SECRET` | later | Must equal `DEALER_MAP_API_SECRET` in the ERP's `.env`. Leave unset for now |
 
 `CRON_SECRET` is not optional in production: Vercel sends it as `Authorization:
 Bearer …` to the nightly reset, and the only other accepted caller is a logged-in
@@ -124,78 +121,7 @@ curl -X POST https://your-domain.com/api/cron/reset-stock \
 # => {"ok":true,"ranAt":"…","timezone":"Asia/Kathmandu","dealersReset":N,"cylindersCleared":M}
 ```
 
-## 7. The ERP stock sync (enable once the ERP feed is configured)
-
-Stock numbers can come from the Subidha Gas ERP instead of being typed in by hand:
-`/api/cron/sync-erp-stock` pulls today's dispatched cylinder counts and writes them onto
-the linked dealers.
-
-This runs from **GitHub Actions**, not a Vercel cron — see the limitation note below.
-The workflow is `.github/workflows/erp-sync.yml`, hourly, and it stays dormant until you
-switch it on.
-
-**a. ERP side.** On `marutigas.ratoguras.com`, set the shared secret and clear the
-config cache (Laravel caches config in production, so editing `.env` alone changes
-nothing):
-
-```bash
-echo 'DEALER_MAP_API_SECRET=<a new random hex string>' >> .env
-php artisan config:clear && php artisan config:cache
-```
-
-Verify: no token must give 401, the right token must give JSON.
-
-```bash
-curl -s https://marutigas.ratoguras.com/api/dealer-stock/today            # 401
-curl -s https://marutigas.ratoguras.com/api/dealer-stock/today \
-  -H "Authorization: Bearer <the secret>"                                  # {"date":…,"dealers":[…]}
-```
-
-A `503 Dealer map feed is not configured.` means the secret is still unset or the config
-cache is stale.
-
-**b. Vercel side.** Add `ERP_FEED_URL` and `ERP_FEED_SECRET` (the same string as
-`DEALER_MAP_API_SECRET`), then redeploy so the functions pick them up.
-
-**c. Link the dealers.** This step is mandatory and easy to miss — without it the sync
-runs, reports success, and updates nothing. The two systems keep separately-authored
-dealer lists, so each dealer here has to record its ERP `vendors.id`:
-
-```bash
-npm run link-erp                          # report: who is linked, who is not
-npm run link-erp -- --auto                # link the unambiguous name matches (101 of 349)
-npm run link-erp -- --template todo.csv   # export the remaining 248 with suggestions
-npm run link-erp -- --csv todo.csv        # apply the filled-in file
-```
-
-Names alone cannot do this job: only 4 of 349 ERP names match a dealer here exactly
-("Aakansha Jeneral Store,Birendra Bazar" against "Karki Suppler"), and loosening the
-match far enough to help starts colliding, which would credit one dealer's cylinders to
-another. So `--auto` writes only where a name resolves to exactly one dealer, and
-everything else waits for a human.
-
-**d. GitHub side.** Settings → Secrets and variables → Actions:
-
-| Kind | Name | Value |
-| --- | --- | --- |
-| Secret | `PROD_URL` | `https://your-domain.com` (no trailing slash needed) |
-| Secret | `CRON_SECRET` | the same value as Vercel's `CRON_SECRET` |
-| Variable | `ERP_SYNC_ENABLED` | `true` — **set this last**, it is the on switch |
-
-Until `ERP_SYNC_ENABLED` is `true`, the workflow skips every run, so nothing fails on a
-schedule while the feed is still being set up. Test by hand from the **Actions** tab
-(**Run workflow**) before enabling the schedule.
-
-```bash
-curl -X POST https://your-domain.com/api/cron/sync-erp-stock \
-  -H "Authorization: Bearer $CRON_SECRET"
-# => {"ok":true,"date":"…","matched":37,"updated":12,"unlinked":[…]}
-```
-
-`unlinked` is the list worth reading: those dealers dispatched cylinders today and none
-of it reached the map, because nobody has linked them yet.
-
-## 8. Verify the deployment
+## 7. Verify the deployment
 
 - [ ] Homepage renders the clustered map; zooming in splits the clusters.
 - [ ] Dealer count in the header reads **390**.
@@ -210,8 +136,6 @@ of it reached the map, because nobody has linked them yet.
 - [ ] `/api/cron/reset-stock` returns **401** with no `Authorization` header, and
       `{"ok":true,…}` with the right bearer token — zeroing the dashboard totals and
       adding "Nightly reset" rows to `/admin/history`.
-- [ ] `/api/cron/sync-erp-stock` returns **401** with no header, and **502** with a valid
-      token while `ERP_FEED_URL` is unset. Both are correct before step 7.
 
 ---
 
@@ -222,18 +146,8 @@ the reset fires somewhere between 00:00 and 00:59 Nepal time rather than exactly
 midnight. Stock is a "delivered today" number that nobody reads at 00:30, so this is
 accepted rather than worked around.
 
-**The ERP sync cannot be a Vercel cron on Hobby.** Vercel rejects any schedule running
-more than once per day *at deploy time* ("Hobby accounts are limited to daily cron
-jobs"), and a once-daily sync would show one arbitrary moment of the day's dispatching.
-Hence GitHub Actions. The route itself is a normal endpoint and stays callable by bearer
-token, so moving it back to `vercel.json` is a two-line change if the project ever goes
-Pro.
-
-**Scheduled GitHub workflows are disabled after 60 days of repository inactivity.** If
-the sync goes quiet, check that before debugging the code.
-
-**Every dealer starts with `erpVendorId` null**, so a freshly deployed sync matches
-nothing by design. It stays that way until `npm run link-erp` is run — see step 7c.
+**Hobby allows one cron per day.** It is spent on the nightly reset. Anything else that
+needs a schedule has to come from outside Vercel.
 
 **Re-running the import** overwrites `address`, `district` and `municipality` from
 Nominatim (which is what repairs a `--skip-geocode` pass), fills `phone` only when it is

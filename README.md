@@ -7,10 +7,8 @@ password-protected dashboard for staff to keep stock numbers current.
   stock, with search, filters, "near me", click-to-call and directions.
 - **Admin** — dashboard stats, dealer CRUD, stock updates, and an audit trail of
   every change.
-- **ERP sync** — an hourly cron pulls today's dispatched cylinder counts from the
-  Subidha Gas ERP, so the map shows the day's real deliveries instead of hand-typed
-  figures. Manual entry still works, and wins until the next pull. Dealers are matched
-  by name; see [`DEPLOYMENT.md`](./DEPLOYMENT.md) §7.
+
+Stock numbers are entered by staff in the dashboard — there is no upstream feed.
 
 Built with Next.js 15 (App Router), TypeScript, Tailwind v4, shadcn/ui, Prisma 7,
 Postgres, Auth.js v5, Leaflet + React Leaflet. No paid mapping APIs.
@@ -123,6 +121,28 @@ What a re-import does to an existing row:
 | `stockQuantity`, `status` | **never touched** — a re-import cannot wipe numbers staff entered |
 | `phone` | filled only when blank, so an admin-corrected number survives |
 | `address`, `district`, `municipality` | overwritten from Nominatim, which is more authoritative than whatever placeholder is in the row. This is what lets a second run repair districts left by an earlier `--skip-geocode` pass. Use `--skip-geocode` to preserve manual edits. |
+
+### Phone numbers from a dealer-list CSV
+
+Only 35 of the 390 dealers carry a phone number in the KML, so `npm run import-phones`
+tops them up from a `Dealer Name,Area,Phone,…` export:
+
+```bash
+npm run import-phones -- dealer_list.csv --dry-run              # report, write nothing
+npm run import-phones -- dealer_list.csv                        # fill the blanks
+npm run import-phones -- dealer_list.csv --unmatched todo.csv   # export what missed
+```
+
+It never creates a dealer and never overwrites a number already stored — an
+admin-corrected phone outranks a bulk file, and a conflict is printed rather than
+resolved.
+
+Matching is by name and deliberately conservative. The two lists were authored
+separately and the CSV appends a place to every name, so **exact names resolve 4 of
+344**; dropping the trailing place (`Aarti Gas Pasal, Itr` → `Aarti Gas Pasal`) lifts it
+to **99**. Anything that resolves to more than one dealer — two branches of one chain in
+different towns — is skipped, because a wrong number sends a customer to the wrong shop.
+The rest come out in `--unmatched` for a human.
 
 ### Addresses (reverse geocoding)
 
@@ -271,6 +291,7 @@ resolves both through `overrides` in `package.json` (`postcss ^8.5.26`,
 | `npm run build` | Production build (runs `prisma generate` first) |
 | `npm test` | Unit tests — KML parsing, phone extraction, thresholds, geo |
 | `npm run import` | Import dealers from the KML |
+| `npm run import-phones -- <file.csv>` | Fill in missing phone numbers from a dealer-list CSV |
 | `npm run seed` | Create/reset the admin account |
 | `npm run db:migrate` | Create a migration |
 | `npm run db:deploy` | Apply migrations (production) |
