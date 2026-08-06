@@ -37,6 +37,9 @@ yarn-error.log*
 # prisma 7 generates the client into src/ rather than node_modules
 /src/generated/
 
+# source KML export (local input for the import script)
+/Maruti Gas Dealer (1).kmz/
+
 # local verification artefacts
 /dev.log
 /prod.log
