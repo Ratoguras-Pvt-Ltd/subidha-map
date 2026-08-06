@@ -162,7 +162,7 @@
   background: var(--muted);
 }
 
-/* The pin divIcon is rotated 45°; keep the marker box itself transparent. */
+/* Markers are inline SVG (a gas cylinder); keep Leaflet's own icon box invisible. */
 .subidha-pin,
 .subidha-user-pin {
   background: transparent;

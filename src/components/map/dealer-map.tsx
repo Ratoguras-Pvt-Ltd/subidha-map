@@ -56,7 +56,9 @@ function cylinderIcon(dealer: PublicDealer, isSelected: boolean): L.DivIcon {
          stroke-linejoin="round">
         <rect x="11.4" y="0.9" width="5.2" height="5" rx="1.4"/>
         <rect x="8" y="4.6" width="12" height="4.6" rx="2"/>
-        <rect x="2.6" y="8" width="22.8" height="30.6" rx="7"/>
+        <!-- Rounded shoulders, near-flat base: a cylinder standing on the ground,
+             rather than the capsule an evenly-rounded rect reads as. -->
+        <path d="M9.6 8H18.4A7 7 0 0 1 25.4 15V35.6A3 3 0 0 1 22.4 38.6H5.6A3 3 0 0 1 2.6 35.6V15A7 7 0 0 1 9.6 8Z"/>
       </g>
       <text x="14" y="24.6" text-anchor="middle" dominant-baseline="middle"
         fill="#fff" font-size="${fontSize}" font-weight="700"
