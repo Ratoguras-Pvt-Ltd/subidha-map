@@ -3,7 +3,14 @@ import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 
 import { extractPhone, parseCoordinates, parseKml, makeSourceKey } from "../scripts/kml";
-import { RESET_TIMEZONE, deriveStatus, isPlottedOnMap, matchesFilter } from "../src/lib/stock";
+import {
+  FILTER_LABELS,
+  RESET_TIMEZONE,
+  deriveStatus,
+  hasStock,
+  matchesFilter,
+  type StockFilter,
+} from "../src/lib/stock";
 import { haversineKm, isWithinNepal } from "../src/lib/geo";
 
 /**
@@ -226,7 +233,7 @@ test("deriveStatus at every threshold boundary", () => {
   assert.equal(deriveStatus(125), "AVAILABLE");
 });
 
-test("the three public filters cover all four statuses", () => {
+test("the public filters map onto the four statuses", () => {
   assert.equal(matchesFilter("AVAILABLE", "AVAILABLE"), true);
   assert.equal(matchesFilter("LOW_STOCK", "AVAILABLE"), false);
 
@@ -235,26 +242,36 @@ test("the three public filters cover all four statuses", () => {
   assert.equal(matchesFilter("CRITICAL", "LOW"), true);
   assert.equal(matchesFilter("OUT_OF_STOCK", "LOW"), false);
 
-  assert.equal(matchesFilter("OUT_OF_STOCK", "OUT"), true);
-  assert.equal(matchesFilter("CRITICAL", "OUT"), false);
+  // No out-of-stock filter, because out-of-stock dealers are not shown publicly.
+  assert.deepEqual(Object.keys(FILTER_LABELS).sort(), ["ALL", "AVAILABLE", "LOW"]);
 
   for (const s of ["AVAILABLE", "LOW_STOCK", "CRITICAL", "OUT_OF_STOCK"] as const) {
     assert.equal(matchesFilter(s, "ALL"), true);
   }
 });
 
-test("only dealers holding cylinders get a map pin", () => {
-  assert.equal(isPlottedOnMap("AVAILABLE"), true);
-  assert.equal(isPlottedOnMap("LOW_STOCK"), true);
-  assert.equal(isPlottedOnMap("CRITICAL"), true, "a dealer with 1 cylinder can still sell it");
-  assert.equal(isPlottedOnMap("OUT_OF_STOCK"), false);
+test("only dealers holding cylinders are shown publicly (map and side panel)", () => {
+  assert.equal(hasStock("AVAILABLE"), true);
+  assert.equal(hasStock("LOW_STOCK"), true);
+  assert.equal(hasStock("CRITICAL"), true, "a dealer with 1 cylinder can still sell it");
+  assert.equal(hasStock("OUT_OF_STOCK"), false);
 
-  // Anything deriveStatus() calls stocked must be plottable, so a future threshold
-  // change cannot silently hide dealers who do have cylinders.
+  // Anything deriveStatus() calls stocked must be publicly visible, so a future
+  // threshold change cannot silently hide dealers who do have cylinders.
   for (const qty of [1, 9, 10, 50, 51, 999]) {
-    assert.equal(isPlottedOnMap(deriveStatus(qty)), true, `${qty} cylinders must be on the map`);
+    assert.equal(hasStock(deriveStatus(qty)), true, `${qty} cylinders must be visible`);
   }
-  assert.equal(isPlottedOnMap(deriveStatus(0)), false);
+  assert.equal(hasStock(deriveStatus(0)), false);
+
+  // Every publicly-shown status must be reachable through some filter, or a dealer
+  // could hold cylinders and still be unfindable.
+  const filters = Object.keys(FILTER_LABELS) as StockFilter[];
+  for (const status of ["AVAILABLE", "LOW_STOCK", "CRITICAL"] as const) {
+    assert.ok(
+      filters.some((f) => f !== "ALL" && matchesFilter(status, f)),
+      `${status} must match at least one named filter`,
+    );
+  }
 });
 
 test("the cron schedule in vercel.json really is midnight in Nepal", () => {

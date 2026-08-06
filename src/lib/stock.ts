@@ -32,23 +32,28 @@ export function deriveStatus(quantity: number): StockStatus {
 export const RESET_TIMEZONE = "Asia/Kathmandu";
 
 /**
- * Only dealers who actually have cylinders get a pin. A customer scanning the map is
- * looking for somewhere to buy gas today, and 380-odd gray pins for dealers with
- * nothing to sell bury the handful that can help them.
+ * Whether a dealer is shown to the public at all — both as a map pin and as a card
+ * in the side panel.
  *
- * Out-of-stock dealers stay in the list (and in the "Out of Stock" filter), so they
- * are still findable — they just don't clutter the map.
+ * A customer is looking for somewhere to buy gas today. 380-odd entries for dealers
+ * with nothing to sell bury the handful that can actually help, so they are omitted
+ * from the public view entirely. The dealer count in the header still reports the
+ * full network, and staff see every dealer in the admin dashboard.
  */
-export function isPlottedOnMap(status: StockStatus): boolean {
+export function hasStock(status: StockStatus): boolean {
   return status !== "OUT_OF_STOCK";
 }
 
-/** The three buckets the public filter bar exposes. */
-export type StockFilter = "ALL" | "AVAILABLE" | "LOW" | "OUT";
+/**
+ * The buckets the public filter bar exposes. There is deliberately no "Out of Stock"
+ * filter, because out-of-stock dealers are not in the public view at all — see
+ * hasStock().
+ */
+export type StockFilter = "ALL" | "AVAILABLE" | "LOW";
 
 /**
- * Four statuses collapse into three public filters: a red (CRITICAL) dealer and
- * a yellow (LOW_STOCK) dealer both answer "who is running low?".
+ * Four statuses collapse into two positive filters: a red (CRITICAL) dealer and a
+ * yellow (LOW_STOCK) dealer both answer "who is running low?".
  */
 export function matchesFilter(status: StockStatus, filter: StockFilter): boolean {
   switch (filter) {
@@ -58,8 +63,6 @@ export function matchesFilter(status: StockStatus, filter: StockFilter): boolean
       return status === "AVAILABLE";
     case "LOW":
       return status === "LOW_STOCK" || status === "CRITICAL";
-    case "OUT":
-      return status === "OUT_OF_STOCK";
   }
 }
 
@@ -100,10 +103,11 @@ export const STATUS_PRESENTATION: Record<StockStatus, StatusPresentation> = {
 };
 
 export const FILTER_LABELS: Record<StockFilter, string> = {
-  ALL: "All Dealers",
+  // "All" means all dealers holding cylinders today, since that is the whole of the
+  // public view — not the full 390-dealer network.
+  ALL: "All",
   AVAILABLE: "Available",
   LOW: "Low Stock",
-  OUT: "Out of Stock",
 };
 
 /**

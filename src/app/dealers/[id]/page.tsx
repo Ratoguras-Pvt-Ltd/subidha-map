@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { ArrowLeft, MapPin, Navigation, Phone } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
+import { SiteCredit } from "@/components/site-credit";
 import { SiteHeader } from "@/components/site-header";
 import { getPublicDealers } from "@/lib/dealers";
 import { directionsUrl } from "@/lib/geo";
@@ -143,6 +144,10 @@ export default async function DealerPage({ params }: { params: Promise<{ id: str
           Get directions
         </Button>
       </main>
+
+      <footer className="border-t px-4 py-6">
+        <SiteCredit className="text-center text-xs text-muted-foreground" />
+      </footer>
 
       <script
         type="application/ld+json"

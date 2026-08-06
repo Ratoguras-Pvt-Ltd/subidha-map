@@ -23,42 +23,50 @@ type Props = {
 const FALLBACK_CENTER: [number, number] = [26.4525, 87.2718];
 
 /**
- * Leaflet icons are raw HTML, outside Tailwind's reach — hence the hex values from
- * STATUS_PRESENTATION rather than utility classes.
+ * An LPG cylinder — valve, collar, body — filled with the status colour and carrying
+ * the count. Reads as "gas available here" at a glance in a way a generic map pin
+ * does not.
  *
- * The cylinder count is printed inside the pin so the map answers "how many, where?"
- * without needing a click. The teardrop is a square rotated 45°, so the number lives
- * in a separate unrotated layer on top rather than being rotated with it.
+ * Leaflet icons are raw markup, outside Tailwind's reach, hence the hex values from
+ * STATUS_PRESENTATION and the inline attributes. The white outline keeps the shape
+ * legible against both the green and the built-up parts of the basemap.
  */
-function pinIcon(dealer: PublicDealer, isSelected: boolean): L.DivIcon {
+function cylinderIcon(dealer: PublicDealer, isSelected: boolean): L.DivIcon {
   const { hex } = STATUS_PRESENTATION[dealer.status];
-  const size = isSelected ? 42 : 34;
-  const shadow = isSelected
-    ? "0 0 0 4px rgba(220,38,38,.35),0 2px 6px rgba(0,0,0,.4)"
-    : "0 2px 5px rgba(0,0,0,.35)";
+  const height = isSelected ? 46 : 36;
+  const width = Math.round(height * 0.7);
 
   const quantity = dealer.stockQuantity;
   // 1450 reads as "1.4k", not "1k" — rounding a four-figure delivery down to the
   // nearest thousand throws away the part the reader cares about.
   const label =
     quantity > 999 ? `${(quantity / 1000).toFixed(1).replace(/\.0$/, "")}k` : String(quantity);
-  // Shrink the digits rather than let a 3-4 digit count overflow the pin.
-  const fontSize = label.length >= 4 ? 9 : label.length === 3 ? 10 : 12;
+  // Shrink the digits rather than let a 3-4 character count overflow the body.
+  const fontSize = label.length >= 4 ? 9 : label.length === 3 ? 11 : 13;
+
+  const shadow = isSelected
+    ? "drop-shadow(0 0 3px rgba(220,38,38,.85)) drop-shadow(0 2px 3px rgba(0,0,0,.45))"
+    : "drop-shadow(0 2px 3px rgba(0,0,0,.4))";
 
   return L.divIcon({
     className: "subidha-pin",
-    html: `<span style="position:relative;display:block;width:${size}px;height:${size}px">
-      <span style="position:absolute;inset:0;background:${hex};border:2.5px solid #fff;
-        border-radius:50% 50% 50% 0;transform:rotate(-45deg);box-shadow:${shadow}"></span>
-      <span style="position:absolute;inset:0;display:flex;align-items:center;
-        justify-content:center;padding-bottom:${Math.round(size * 0.12)}px;
-        color:#fff;font-size:${fontSize}px;font-weight:700;line-height:1;
-        font-variant-numeric:tabular-nums;text-shadow:0 1px 1px rgba(0,0,0,.35);
-        pointer-events:none">${label}</span>
-    </span>`,
-    iconSize: [size, size],
-    iconAnchor: [size / 2, size],
-    popupAnchor: [0, -size],
+    html: `<svg viewBox="0 0 28 40" width="${width}" height="${height}"
+        style="filter:${shadow};display:block" aria-hidden="true">
+      <g fill="${hex}" stroke="#fff" stroke-width="${isSelected ? 2 : 1.6}"
+         stroke-linejoin="round">
+        <rect x="11.4" y="0.9" width="5.2" height="5" rx="1.4"/>
+        <rect x="8" y="4.6" width="12" height="4.6" rx="2"/>
+        <rect x="2.6" y="8" width="22.8" height="30.6" rx="7"/>
+      </g>
+      <text x="14" y="24.6" text-anchor="middle" dominant-baseline="middle"
+        fill="#fff" font-size="${fontSize}" font-weight="700"
+        style="font-family:var(--font-sans,system-ui);font-variant-numeric:tabular-nums"
+      >${label}</text>
+    </svg>`,
+    iconSize: [width, height],
+    // The cylinder stands on the dealer's location, so anchor at the base.
+    iconAnchor: [width / 2, height],
+    popupAnchor: [0, -height],
   });
 }
 
@@ -111,7 +119,7 @@ export default function DealerMap({ dealers, selectedId, onSelect, userLocation 
         <Marker
           key={dealer.id}
           position={[dealer.latitude, dealer.longitude]}
-          icon={pinIcon(dealer, dealer.id === selectedId)}
+          icon={cylinderIcon(dealer, dealer.id === selectedId)}
           // Re-render the icon when selection changes — Leaflet won't diff it for us.
           eventHandlers={{ click: () => onSelect(dealer.id) }}
           title={`${dealer.dealerName} — ${dealer.stockQuantity} cylinder${dealer.stockQuantity === 1 ? "" : "s"} today`}

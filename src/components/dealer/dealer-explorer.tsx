@@ -12,12 +12,13 @@ import { haversineKm } from "@/lib/geo";
 import {
   FILTER_LABELS,
   STATUS_PRESENTATION,
-  isPlottedOnMap,
+  hasStock,
   matchesFilter,
   type StockFilter,
 } from "@/lib/stock";
 import type { PublicDealer } from "@/lib/dealers";
 import { MapSkeleton } from "@/components/map/map-skeleton";
+import { SiteCredit } from "@/components/site-credit";
 import { DealerCard } from "./dealer-card";
 
 // Leaflet touches `window` at import time, so it can never be server-rendered.
@@ -26,7 +27,7 @@ const DealerMap = dynamic(() => import("@/components/map/dealer-map"), {
   loading: () => <MapSkeleton />,
 });
 
-const FILTERS: StockFilter[] = ["ALL", "AVAILABLE", "LOW", "OUT"];
+const FILTERS: StockFilter[] = ["ALL", "AVAILABLE", "LOW"];
 
 export function DealerExplorer({ dealers }: { dealers: PublicDealer[] }) {
   const [query, setQuery] = useState("");
@@ -42,10 +43,15 @@ export function DealerExplorer({ dealers }: { dealers: PublicDealer[] }) {
     [dealers],
   );
 
+  // The public view is only dealers holding cylinders — see hasStock(). Everything
+  // below (map pins, cards, filter counts) derives from this one list, so the map and
+  // the side panel can never disagree about who is on offer.
+  const inStock = useMemo(() => dealers.filter((d) => hasStock(d.status)), [dealers]);
+
   const visible = useMemo(() => {
     const needle = query.trim().toLowerCase();
 
-    const filtered = dealers.filter((d) => {
+    const filtered = inStock.filter((d) => {
       if (!matchesFilter(d.status, filter)) return false;
       if (!needle) return true;
       // ponytail: ~391 rows filter instantly in the browser — no search API, no debounce.
@@ -65,14 +71,9 @@ export function DealerExplorer({ dealers }: { dealers: PublicDealer[] }) {
         distanceKm: haversineKm(userLocation.lat, userLocation.lng, d.latitude, d.longitude),
       }))
       .sort((a, b) => a.distanceKm - b.distanceKm);
-  }, [dealers, query, filter, userLocation]);
+  }, [inStock, query, filter, userLocation]);
 
-  // The map plots only dealers with stock; the list keeps everyone. See
-  // isPlottedOnMap() for why.
-  const plotted = useMemo(
-    () => visible.map((v) => v.dealer).filter((d) => isPlottedOnMap(d.status)),
-    [visible],
-  );
+  const plotted = useMemo(() => visible.map((v) => v.dealer), [visible]);
 
   // Marker click scrolls the matching card into view.
   useEffect(() => {
@@ -108,9 +109,9 @@ export function DealerExplorer({ dealers }: { dealers: PublicDealer[] }) {
   }
 
   const counts = useMemo(() => {
-    const by = (f: StockFilter) => dealers.filter((d) => matchesFilter(d.status, f)).length;
-    return { ALL: dealers.length, AVAILABLE: by("AVAILABLE"), LOW: by("LOW"), OUT: by("OUT") };
-  }, [dealers]);
+    const by = (f: StockFilter) => inStock.filter((d) => matchesFilter(d.status, f)).length;
+    return { ALL: inStock.length, AVAILABLE: by("AVAILABLE"), LOW: by("LOW") };
+  }, [inStock]);
 
   return (
     // flex-1 + min-h-0 rather than calc(100dvh - header): the parent already reserves
@@ -189,8 +190,12 @@ export function DealerExplorer({ dealers }: { dealers: PublicDealer[] }) {
           </div>
 
           <div className="flex items-center justify-between gap-2">
+            {/* Counts the in-stock set, not the 390-dealer network — the header
+                already reports that, and "12 of 390" here would read as a bug. */}
             <p className="text-xs text-muted-foreground" aria-live="polite">
-              {visible.length} of {dealers.length} dealers
+              {visible.length === inStock.length
+                ? `${visible.length} dealer${visible.length === 1 ? "" : "s"} with stock today`
+                : `${visible.length} of ${inStock.length} with stock today`}
             </p>
             <Button size="sm" variant="outline" onClick={findNearest} disabled={locating}>
               <LocateFixed className={cn("size-3.5", locating && "animate-spin")} aria-hidden />
@@ -218,22 +223,37 @@ export function DealerExplorer({ dealers }: { dealers: PublicDealer[] }) {
 
         <div className="min-h-0 flex-1 overflow-y-auto p-4">
           {visible.length === 0 ? (
+            // Two very different situations: nobody has cylinders yet today, or the
+            // search simply matched none of those who do. Don't offer a "reset
+            // search" button for the first one — there is nothing to reset.
             <div className="py-12 text-center">
-              <p className="font-medium">No dealers match</p>
-              <p className="mt-1 text-sm text-muted-foreground">
-                Try a different area name or clear the filter.
-              </p>
-              <Button
-                variant="outline"
-                size="sm"
-                className="mt-4"
-                onClick={() => {
-                  setQuery("");
-                  setFilter("ALL");
-                }}
-              >
-                Reset search
-              </Button>
+              {inStock.length === 0 ? (
+                <>
+                  <p className="font-medium">No cylinders available yet</p>
+                  <p className="mt-1 text-sm text-muted-foreground">
+                    Today&apos;s deliveries have not been recorded. Counts reset at
+                    midnight, so check back later or call your usual dealer.
+                  </p>
+                </>
+              ) : (
+                <>
+                  <p className="font-medium">No dealers match</p>
+                  <p className="mt-1 text-sm text-muted-foreground">
+                    Try a different area name or clear the filter.
+                  </p>
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    className="mt-4"
+                    onClick={() => {
+                      setQuery("");
+                      setFilter("ALL");
+                    }}
+                  >
+                    Reset search
+                  </Button>
+                </>
+              )}
             </div>
           ) : (
             <div className="space-y-3">
@@ -253,6 +273,10 @@ export function DealerExplorer({ dealers }: { dealers: PublicDealer[] }) {
             </div>
           )}
         </div>
+
+        {/* Outside the scroll container: at the end of a ~391-card list the credit
+            would never be seen. */}
+        <SiteCredit className="shrink-0 border-t px-4 py-2 text-center text-[11px] text-muted-foreground" />
       </aside>
     </div>
   );
