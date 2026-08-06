@@ -1,0 +1,55 @@
+name: ERP stock sync
+
+# Pulls today's dispatched cylinder counts from the Subidha ERP into the map.
+#
+# This lives in GitHub Actions rather than vercel.json because Vercel's Hobby plan
+# rejects any cron running more than once per day *at deploy time* ("Hobby accounts are
+# limited to daily cron jobs"), and once a day is useless for a number that changes as
+# dispatches are logged. The single Vercel cron slot is spent on the nightly reset.
+#
+# Note: GitHub disables scheduled workflows after 60 days with no repository activity.
+# If the sync goes quiet, check that the schedule is still enabled before debugging code.
+
+on:
+  schedule:
+    # Hourly, on the hour (UTC). GitHub's scheduler is best-effort and can run late
+    # under load; the sync is idempotent, so a skipped or doubled run is harmless.
+    - cron: "0 * * * *"
+  workflow_dispatch:
+
+# One run at a time: two overlapping syncs would write the same quantities twice and
+# add duplicate StockHistory rows for no benefit.
+concurrency:
+  group: erp-sync
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    # Gated on a repository variable so this stays dormant until the ERP feed is
+    # configured — an hourly failure email is worse than no sync. Enable with
+    # Settings -> Secrets and variables -> Actions -> Variables: ERP_SYNC_ENABLED = true
+    if: vars.ERP_SYNC_ENABLED == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Trigger the sync
+        env:
+          PROD_URL: ${{ secrets.PROD_URL }}
+          CRON_SECRET: ${{ secrets.CRON_SECRET }}
+        run: |
+          set -euo pipefail
+
+          if [ -z "${PROD_URL:-}" ] || [ -z "${CRON_SECRET:-}" ]; then
+            echo "::error::PROD_URL and CRON_SECRET must both be set as repository secrets."
+            exit 1
+          fi
+
+          # --fail-with-body so a non-2xx fails the job AND still prints the body, which
+          # carries the reason (502 = ERP unreachable or env vars unset, 401 = wrong
+          # secret). A silent success on a broken feed would leave the map showing this
+          # morning's numbers with nobody the wiser.
+          curl --fail-with-body --silent --show-error --location \
+            --max-time 120 \
+            --request POST "${PROD_URL%/}/api/cron/sync-erp-stock" \
+            --header "Authorization: Bearer ${CRON_SECRET}" \
+            --header "Accept: application/json"
