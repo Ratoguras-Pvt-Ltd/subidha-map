@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Script from "next/script";
 import { notFound } from "next/navigation";
 import { ArrowLeft, MapPin, Navigation, Phone } from "lucide-react";
 
@@ -71,6 +72,11 @@ export default async function DealerPage({ params }: { params: Promise<{ id: str
 
   return (
     <div className="min-h-dvh">
+      <Script
+        src="https://cloud.umami.is/script.js"
+        data-website-id="28b9f508-38eb-4dca-8280-f0c189811a06"
+        strategy="afterInteractive"
+      />
       <SiteHeader />
 
       <main className="mx-auto max-w-2xl px-4 py-8">

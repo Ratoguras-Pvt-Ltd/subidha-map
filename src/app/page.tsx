@@ -1,3 +1,5 @@
+import Script from "next/script";
+
 import { DealerExplorer } from "@/components/dealer/dealer-explorer";
 import { SiteHeader } from "@/components/site-header";
 import { getPublicDealers } from "@/lib/dealers";
@@ -20,6 +22,11 @@ export default async function HomePage() {
     // excluded from the scroll-container chain, which is what "only the dealer list
     // scrolls" actually requires.
     <div className="fixed inset-0 flex flex-col overflow-clip">
+      <Script
+        src="https://cloud.umami.is/script.js"
+        data-website-id="28b9f508-38eb-4dca-8280-f0c189811a06"
+        strategy="afterInteractive"
+      />
       <SiteHeader dealerCount={dealers.length} />
 
       {/* The map is the product, so it gets the viewport. The h1 stays for crawlers
