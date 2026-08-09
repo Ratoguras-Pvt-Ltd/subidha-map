@@ -11,7 +11,7 @@
     "import": "tsx scripts/import-kml.ts",
     "import-phones": "tsx scripts/import-phones.ts",
     "seed": "tsx prisma/seed.ts",
-    "test": "tsx --test tests/import.test.ts tests/rate-limit.test.ts",
+    "test": "tsx --test tests/import.test.ts tests/rate-limit.test.ts tests/alerts.test.ts",
     "db:migrate": "prisma migrate dev",
     "db:deploy": "prisma migrate deploy",
     "db:studio": "prisma studio"

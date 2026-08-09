@@ -75,6 +75,8 @@ export function DealerExplorer({ dealers }: { dealers: PublicDealer[] }) {
       if (!matchesFilter(d.status, filter)) return false;
       if (!needle) return true;
       // ponytail: ~391 rows filter instantly in the browser — no search API, no debounce.
+      // Revisit when dealer count nears ~3,000 or the getPublicDealers() payload
+      // exceeds ~150-200KB gzipped — see src/lib/dealers.ts.
       return (
         d.dealerName.toLowerCase().includes(needle) ||
         d.district?.toLowerCase().includes(needle) ||

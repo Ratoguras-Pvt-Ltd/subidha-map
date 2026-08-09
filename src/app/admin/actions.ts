@@ -7,6 +7,7 @@ import { auth } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
 import { DEALERS_TAG } from "@/lib/dealers";
 import { deriveStatus } from "@/lib/stock";
+import { shouldAlert, sendLowStockAlert } from "@/lib/alerts";
 import { dealerSchema, stockUpdateSchema } from "@/lib/validations";
 import { MUTATION_LIMIT, clientIp, rateLimit } from "@/lib/rate-limit";
 
@@ -134,12 +135,13 @@ export async function updateStock(formData: FormData): Promise<ActionResult> {
       return { ok: false, error: parsed.error.issues[0]?.message ?? "Check the quantity." };
     }
     const { dealerId, newQuantity } = parsed.data;
+    const newStatus = deriveStatus(newQuantity);
 
     // One transaction so a stock change can never exist without its audit row.
-    await prisma.$transaction(async (tx) => {
+    const { previousStatus, dealerName } = await prisma.$transaction(async (tx) => {
       const dealer = await tx.dealer.findUnique({
         where: { id: dealerId },
-        select: { stockQuantity: true },
+        select: { stockQuantity: true, status: true, dealerName: true },
       });
       if (!dealer) throw new Error("Dealer not found.");
 
@@ -148,7 +150,7 @@ export async function updateStock(formData: FormData): Promise<ActionResult> {
         data: {
           stockQuantity: newQuantity,
           // The only writer of `status` — keeps it in lockstep with the quantity.
-          status: deriveStatus(newQuantity),
+          status: newStatus,
         },
       });
 
@@ -161,13 +163,54 @@ export async function updateStock(formData: FormData): Promise<ActionResult> {
           updatedByName: admin.name,
         },
       });
+
+      return { previousStatus: dealer.status, dealerName: dealer.dealerName };
     });
 
     refreshPublicViews();
     revalidatePath("/admin/history");
     revalidatePath(`/dealers/${dealerId}`);
+
+    // Best-effort: a broken/slow notification must never fail or delay the stock
+    // save that already committed above.
+    if (shouldAlert(previousStatus, newStatus)) {
+      prisma.user
+        .findMany({ where: { role: "ADMIN" }, select: { email: true, name: true } })
+        .then((admins) =>
+          sendLowStockAlert({
+            dealer: { id: dealerId, dealerName },
+            previousStatus,
+            newStatus,
+            admins,
+          }),
+        )
+        .catch((err) => console.error("[low-stock-alert] failed to send", err));
+    }
+
     return { ok: true };
   } catch (error) {
     return failure(error);
   }
+}
+
+const TREND_WINDOW_DAYS = 30;
+
+/**
+ * A read, not a mutation — checks the session directly rather than going through
+ * requireAdmin(), so opening a chart doesn't compete with real edits for the
+ * shared mutation rate-limit budget.
+ */
+export async function getDealerStockHistory(dealerId: string) {
+  const session = await auth();
+  if (!session?.user?.id) throw new Error("Not signed in.");
+
+  const since = new Date(Date.now() - TREND_WINDOW_DAYS * 24 * 60 * 60 * 1000);
+
+  const rows = await prisma.stockHistory.findMany({
+    where: { dealerId, updatedAt: { gte: since } },
+    orderBy: { updatedAt: "asc" },
+    select: { newQuantity: true, updatedAt: true, updatedBy: true, updatedByName: true },
+  });
+
+  return rows.map((r) => ({ ...r, updatedAt: r.updatedAt.toISOString() }));
 }

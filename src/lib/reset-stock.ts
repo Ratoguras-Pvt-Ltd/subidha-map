@@ -1,12 +1,10 @@
 import { prisma } from "./prisma";
+import { SYSTEM_ACTOR } from "./stock";
 
 // Nepal runs at UTC+05:45 all year — no daylight saving — so midnight in Kathmandu
 // is always 18:15 UTC the previous day. That is the schedule in vercel.json, and
 // tests/import.test.ts asserts the two agree.
-export { RESET_TIMEZONE } from "./stock";
-
-/** Marker used in StockHistory.updatedBy for entries the scheduler wrote. */
-export const SYSTEM_ACTOR = "system:nightly-reset";
+export { RESET_TIMEZONE, SYSTEM_ACTOR } from "./stock";
 
 export type ResetSummary = {
   dealersReset: number;

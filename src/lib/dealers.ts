@@ -46,6 +46,10 @@ async function queryPublicDealers(): Promise<PublicDealer[]> {
  * The whole network is ~391 rows, so one cached query serves the map, the cards and
  * the JSON endpoint. Admin writes call revalidateTag(DEALERS_TAG), which is what
  * makes a stock save show up publicly.
+ *
+ * ponytail: this ships the whole table to every visitor. Revisit (paginate/search
+ * server-side) when dealer count nears ~3,000 or this payload exceeds ~150-200KB
+ * gzipped — see the matching note in src/components/dealer/dealer-explorer.tsx.
  */
 export const getPublicDealers = unstable_cache(queryPublicDealers, ["public-dealers"], {
   tags: [DEALERS_TAG],

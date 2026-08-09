@@ -32,6 +32,15 @@ export function deriveStatus(quantity: number): StockStatus {
 export const RESET_TIMEZONE = "Asia/Kathmandu";
 
 /**
+ * Marker used in StockHistory.updatedBy for entries the scheduler wrote. Lives
+ * here rather than in reset-stock.ts so client components (e.g. the stock
+ * sparkline) can tell a reset row apart from a manual edit without pulling in
+ * the Prisma/pg driver — importing anything from reset-stock.ts drags prisma.ts
+ * along, which breaks in the browser bundle.
+ */
+export const SYSTEM_ACTOR = "system:nightly-reset";
+
+/**
  * Whether a dealer is shown to the public at all — both as a map pin and as a card
  * in the side panel.
  *

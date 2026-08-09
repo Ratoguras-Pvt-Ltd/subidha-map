@@ -7,6 +7,7 @@ import { prisma } from "@/lib/prisma";
 import { STATUS_PRESENTATION, relativeTime } from "@/lib/stock";
 import { DealerFormDialog } from "./dealer-form-dialog";
 import { DealerRowActions } from "./dealer-row-actions";
+import { DealerTrendSheet } from "./dealer-trend-sheet";
 import { StockDialog } from "./stock-dialog";
 
 export const metadata = { title: "Dealers" };
@@ -162,6 +163,7 @@ export default async function DealersPage({
                         dealerName={dealer.dealerName}
                         currentQuantity={dealer.stockQuantity}
                       />
+                      <DealerTrendSheet dealerId={dealer.id} dealerName={dealer.dealerName} />
                       <DealerRowActions
                         dealer={{
                           id: dealer.id,
