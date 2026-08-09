@@ -3,20 +3,22 @@
 import dynamic from "next/dynamic";
 import type { CSSProperties } from "react";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { Info, LocateFixed, Search, X } from "lucide-react";
+import { Info, Languages, LocateFixed, Search, X } from "lucide-react";
 import { toast } from "sonner";
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import { cn } from "@/lib/utils";
 import { haversineKm } from "@/lib/geo";
-import {
-  FILTER_LABELS,
-  STATUS_PRESENTATION,
-  hasStock,
-  matchesFilter,
-  type StockFilter,
-} from "@/lib/stock";
+import { STATUS_PRESENTATION, hasStock, matchesFilter, type StockFilter } from "@/lib/stock";
+import { STRINGS, LANG_STORAGE_KEY, type Lang } from "@/lib/i18n";
 import type { PublicDealer } from "@/lib/dealers";
 import { MapSkeleton } from "@/components/map/map-skeleton";
 import { SiteCredit } from "@/components/site-credit";
@@ -44,10 +46,24 @@ const SNAPS = [0.48, 0.75, 0.96] as const;
 export function DealerExplorer({ dealers }: { dealers: PublicDealer[] }) {
   const [query, setQuery] = useState("");
   const [filter, setFilter] = useState<StockFilter>("ALL");
+  const [district, setDistrict] = useState("ALL");
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const [userLocation, setUserLocation] = useState<{ lat: number; lng: number } | null>(null);
   const [locating, setLocating] = useState(false);
   const [snap, setSnap] = useState(0);
+  const [lang, setLang] = useState<Lang>("en");
+  const s = STRINGS[lang];
+
+  // Sticky across visits, but only ever read/written client-side — the server
+  // render always starts in English, so there is no hydration mismatch to guard.
+  useEffect(() => {
+    const saved = localStorage.getItem(LANG_STORAGE_KEY);
+    if (saved === "en" || saved === "ne") setLang(saved);
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem(LANG_STORAGE_KEY, lang);
+  }, [lang]);
 
   const cardRefs = useRef(new Map<string, HTMLElement>());
   const shellRef = useRef<HTMLDivElement>(null);
@@ -68,11 +84,20 @@ export function DealerExplorer({ dealers }: { dealers: PublicDealer[] }) {
   // the side panel can never disagree about who is on offer.
   const inStock = useMemo(() => dealers.filter((d) => hasStock(d.status)), [dealers]);
 
+  // Options for the district dropdown — derived from who actually has stock, so it
+  // never offers a district with nothing in it.
+  const districts = useMemo(
+    () =>
+      Array.from(new Set(inStock.map((d) => d.district).filter((d): d is string => !!d))).sort(),
+    [inStock],
+  );
+
   const visible = useMemo(() => {
     const needle = query.trim().toLowerCase();
 
     const filtered = inStock.filter((d) => {
       if (!matchesFilter(d.status, filter)) return false;
+      if (district !== "ALL" && d.district !== district) return false;
       if (!needle) return true;
       // ponytail: ~391 rows filter instantly in the browser — no search API, no debounce.
       // Revisit when dealer count nears ~3,000 or the getPublicDealers() payload
@@ -93,7 +118,7 @@ export function DealerExplorer({ dealers }: { dealers: PublicDealer[] }) {
         distanceKm: haversineKm(userLocation.lat, userLocation.lng, d.latitude, d.longitude),
       }))
       .sort((a, b) => a.distanceKm - b.distanceKm);
-  }, [inStock, query, filter, userLocation]);
+  }, [inStock, query, filter, district, userLocation]);
 
   const plotted = useMemo(() => visible.map((v) => v.dealer), [visible]);
 
@@ -176,7 +201,7 @@ export function DealerExplorer({ dealers }: { dealers: PublicDealer[] }) {
 
   function findNearest() {
     if (!("geolocation" in navigator)) {
-      toast.error("Your browser can't share a location.");
+      toast.error(s.noGeolocation);
       return;
     }
 
@@ -188,12 +213,12 @@ export function DealerExplorer({ dealers }: { dealers: PublicDealer[] }) {
           lng: position.coords.longitude,
         });
         setLocating(false);
-        toast.success("Showing nearest dealers first");
+        toast.success(s.nearestFirst);
       },
       () => {
         // Denial is a normal outcome, not an error state — the list stays as it was.
         setLocating(false);
-        toast.error("Location unavailable. Search by area name instead.");
+        toast.error(s.locationUnavailable);
       },
       { timeout: 10_000, maximumAge: 60_000 },
     );
@@ -207,13 +232,10 @@ export function DealerExplorer({ dealers }: { dealers: PublicDealer[] }) {
   // Shared by the desktop count row and the mobile drag handle, which doubles as
   // the sheet's title and gives the handle its accessible name.
   const resultCountText = useMemo(
-    () =>
-      // Counts the in-stock set, not the 390-dealer network — the header already
-      // reports that, and "12 of 390" here would read as a bug.
-      visible.length === inStock.length
-        ? `${visible.length} dealer${visible.length === 1 ? "" : "s"} with stock today`
-        : `${visible.length} of ${inStock.length} with stock today`,
-    [visible.length, inStock.length],
+    // Counts the in-stock set, not the 390-dealer network — the header already
+    // reports that, and "12 of 390" here would read as a bug.
+    () => s.resultCount(visible.length, inStock.length),
+    [s, visible.length, inStock.length],
   );
 
   return (
@@ -244,17 +266,28 @@ export function DealerExplorer({ dealers }: { dealers: PublicDealer[] }) {
         {plotted.length === 0 ? (
           <div className="pointer-events-none absolute inset-x-0 top-0 bottom-[var(--sheet-drag,var(--sheet-h))] z-[400] grid place-items-center p-6 lg:bottom-0">
             <p className="pointer-events-auto max-w-xs rounded-xl border bg-background/95 p-4 text-center text-sm shadow-lg backdrop-blur">
-              <span className="font-semibold">No cylinders available right now</span>
+              <span className="font-semibold">{s.mapEmptyTitle}</span>
               <span className="mt-1 block text-muted-foreground">
-                {dealers.length > 0 && totalStock === 0
-                  ? "Today's deliveries have not been recorded yet. Browse the dealer list and call ahead."
-                  : "No dealer matches this search with stock in hand. Try a wider area."}
+                {dealers.length > 0 && totalStock === 0 ? s.mapEmptyNoDeliveries : s.mapEmptyNoMatch}
               </span>
             </p>
           </div>
         ) : null}
 
-        <Legend />
+        {/* Top-right, clear of both the tuned filter-chip row (no room to spare at
+            360px) and the bottom-left Legend — a language choice is a one-off,
+            not something reached for every visit. */}
+        <button
+          type="button"
+          onClick={() => setLang((l) => (l === "en" ? "ne" : "en"))}
+          aria-label={lang === "en" ? "Switch to Nepali" : "Switch to English"}
+          className="absolute right-4 top-4 z-[400] flex items-center gap-1.5 rounded-full border bg-background/95 px-3 py-2 text-xs font-medium shadow-lg backdrop-blur hover:bg-muted"
+        >
+          <Languages className="size-3.5" aria-hidden />
+          {lang === "en" ? "ने" : "EN"}
+        </button>
+
+        <Legend title={s.legendTitle} available={s.legendAvailable} low={s.legendLow} critical={s.legendCritical} />
       </div>
 
       {/* List — a draggable bottom sheet below `lg`; the original static 420px
@@ -303,20 +336,38 @@ export function DealerExplorer({ dealers }: { dealers: PublicDealer[] }) {
               value={query}
               onChange={(e) => setQuery(e.target.value)}
               onFocus={() => setSnap(SNAPS.length - 1)}
-              placeholder="Search dealer, city or district…"
+              placeholder={s.searchPlaceholder}
               aria-label="Search dealers"
               className="h-11 pl-10 pr-12 text-base lg:h-8 lg:pl-9 lg:pr-9 lg:text-sm"
             />
             {query ? (
               <button
                 onClick={() => setQuery("")}
-                aria-label="Clear search"
+                aria-label={s.clearSearch}
                 className="absolute right-1 top-1/2 grid size-10 -translate-y-1/2 place-items-center rounded-full text-muted-foreground hover:bg-muted lg:right-2 lg:size-6"
               >
                 <X className="size-3.5" />
               </button>
             ) : null}
           </div>
+
+          {districts.length > 0 ? (
+            <Select value={district} onValueChange={(value) => setDistrict(value as string)}>
+              <SelectTrigger className="h-11 w-full lg:h-8">
+                <SelectValue placeholder={s.allDistricts}>
+                  {(value: string) => (value === "ALL" ? s.allDistricts : value)}
+                </SelectValue>
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="ALL">{s.allDistricts}</SelectItem>
+                {districts.map((d) => (
+                  <SelectItem key={d} value={d}>
+                    {d}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+          ) : null}
 
           <div
             className="flex flex-wrap items-center gap-1.5"
@@ -338,7 +389,7 @@ export function DealerExplorer({ dealers }: { dealers: PublicDealer[] }) {
                     : "border-border bg-background hover:bg-muted",
                 )}
               >
-                {FILTER_LABELS[f]}
+                {s.filter[f]}
                 <span className="ml-1.5 opacity-70 tabular-nums">{counts[f]}</span>
               </button>
             ))}
@@ -353,7 +404,7 @@ export function DealerExplorer({ dealers }: { dealers: PublicDealer[] }) {
               variant="outline"
               onClick={findNearest}
               disabled={locating}
-              aria-label={locating ? "Locating…" : "Near me"}
+              aria-label={locating ? s.locating : s.nearMe}
               className="ml-auto shrink-0 px-3 lg:hidden"
             >
               <LocateFixed className={cn("size-4", locating && "animate-spin")} aria-hidden />
@@ -366,7 +417,7 @@ export function DealerExplorer({ dealers }: { dealers: PublicDealer[] }) {
             </p>
             <Button size="sm" variant="outline" onClick={findNearest} disabled={locating}>
               <LocateFixed className={cn("size-3.5", locating && "animate-spin")} aria-hidden />
-              {locating ? "Locating…" : "Near me"}
+              {locating ? s.locating : s.nearMe}
             </Button>
           </div>
         </div>
@@ -379,15 +430,12 @@ export function DealerExplorer({ dealers }: { dealers: PublicDealer[] }) {
         {totalStock === 0 ? (
           <p className="flex shrink-0 gap-2 border-b bg-amber-50 p-3 text-xs text-amber-900 dark:bg-amber-950/40 dark:text-amber-200">
             <Info className="mt-0.5 size-3.5 shrink-0" aria-hidden />
-            <span>
-              Today&apos;s deliveries have not been recorded yet. Counts reset at midnight
-              — please call the dealer to confirm before travelling.
-            </span>
+            <span>{s.bannerNoDeliveries}</span>
           </p>
         ) : (
           <p className="hidden shrink-0 gap-2 border-b bg-muted/50 p-3 text-xs text-muted-foreground lg:flex">
             <Info className="mt-0.5 size-3.5 shrink-0" aria-hidden />
-            <span>Figures show cylinders delivered today. Counts reset at midnight.</span>
+            <span>{s.bannerResetsNightly}</span>
           </p>
         )}
 
@@ -402,18 +450,13 @@ export function DealerExplorer({ dealers }: { dealers: PublicDealer[] }) {
             <div className="py-12 text-center">
               {inStock.length === 0 ? (
                 <>
-                  <p className="font-medium">No cylinders available yet</p>
-                  <p className="mt-1 text-sm text-muted-foreground">
-                    Today&apos;s deliveries have not been recorded. Counts reset at
-                    midnight, so check back later or call your usual dealer.
-                  </p>
+                  <p className="font-medium">{s.noStockYetTitle}</p>
+                  <p className="mt-1 text-sm text-muted-foreground">{s.noStockYetBody}</p>
                 </>
               ) : (
                 <>
-                  <p className="font-medium">No dealers match</p>
-                  <p className="mt-1 text-sm text-muted-foreground">
-                    Try a different area name or clear the filter.
-                  </p>
+                  <p className="font-medium">{s.noMatchTitle}</p>
+                  <p className="mt-1 text-sm text-muted-foreground">{s.noMatchBody}</p>
                   <Button
                     variant="outline"
                     size="touch"
@@ -421,9 +464,10 @@ export function DealerExplorer({ dealers }: { dealers: PublicDealer[] }) {
                     onClick={() => {
                       setQuery("");
                       setFilter("ALL");
+                      setDistrict("ALL");
                     }}
                   >
-                    Reset search
+                    {s.resetSearch}
                   </Button>
                 </>
               )}
@@ -441,6 +485,7 @@ export function DealerExplorer({ dealers }: { dealers: PublicDealer[] }) {
                   distanceKm={distanceKm}
                   isSelected={dealer.id === selectedId}
                   onSelect={() => setSelectedId(dealer.id)}
+                  lang={lang}
                 />
               ))}
             </div>
@@ -459,11 +504,7 @@ export function DealerExplorer({ dealers }: { dealers: PublicDealer[] }) {
 
 // No gray entry: out-of-stock dealers are not plotted, so a key for them would
 // describe a pin that never appears.
-const LEGEND = [
-  ["AVAILABLE", "More than 50"],
-  ["LOW_STOCK", "10 – 50"],
-  ["CRITICAL", "Fewer than 10"],
-] as const;
+const LEGEND_STATUSES = ["AVAILABLE", "LOW_STOCK", "CRITICAL"] as const;
 
 /**
  * Desktop only. On a phone the marker already prints its own cylinder count
@@ -471,19 +512,35 @@ const LEGEND = [
  * bottom strip it used to occupy now belongs to the dealer sheet and to
  * OpenStreetMap's required attribution.
  */
-function Legend() {
+function Legend({
+  title,
+  available,
+  low,
+  critical,
+}: {
+  title: string;
+  available: string;
+  low: string;
+  critical: string;
+}) {
+  const labels: Record<(typeof LEGEND_STATUSES)[number], string> = {
+    AVAILABLE: available,
+    LOW_STOCK: low,
+    CRITICAL: critical,
+  };
+
   return (
     <div className="absolute bottom-4 left-4 z-[400] hidden rounded-lg border bg-background/95 p-3 text-xs shadow-lg backdrop-blur lg:block">
-      <p className="mb-1.5 font-semibold">Cylinders in stock today</p>
+      <p className="mb-1.5 font-semibold">{title}</p>
       <ul className="flex flex-col items-start gap-1">
-        {LEGEND.map(([status, label]) => (
+        {LEGEND_STATUSES.map((status) => (
           <li key={status} className="flex items-center gap-2">
             <span
               className="size-2.5 shrink-0 rounded-full"
               style={{ background: STATUS_PRESENTATION[status].hex }}
               aria-hidden
             />
-            <span className="text-muted-foreground">{label}</span>
+            <span className="text-muted-foreground">{labels[status]}</span>
           </li>
         ))}
       </ul>

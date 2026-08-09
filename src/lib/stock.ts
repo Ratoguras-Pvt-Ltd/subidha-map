@@ -124,11 +124,11 @@ export const FILTER_LABELS: Record<StockFilter, string> = {
  * ponytail: Intl.RelativeTimeFormat covers every unit we show; date-fns would be
  * 20 kB for one string.
  */
-export function relativeTime(date: Date | string): string {
+export function relativeTime(date: Date | string, locale = "en"): string {
   const then = typeof date === "string" ? new Date(date) : date;
   const seconds = Math.round((Date.now() - then.getTime()) / 1000);
 
-  const rtf = new Intl.RelativeTimeFormat("en", { numeric: "auto" });
+  const rtf = new Intl.RelativeTimeFormat(locale, { numeric: "auto" });
   const divisions: [number, Intl.RelativeTimeFormatUnit][] = [
     [60, "second"],
     [60, "minute"],

@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { directionsUrl, formatDistance } from "@/lib/geo";
 import { STATUS_PRESENTATION } from "@/lib/stock";
+import { STRINGS, type Lang } from "@/lib/i18n";
 import type { PublicDealer } from "@/lib/dealers";
 import { RelativeTime } from "@/components/relative-time";
 
@@ -16,13 +17,15 @@ type Props = {
   isSelected: boolean;
   distanceKm: number | null;
   onSelect: () => void;
+  lang: Lang;
 };
 
 export const DealerCard = forwardRef<HTMLElement, Props>(function DealerCard(
-  { dealer, isSelected, distanceKm, onSelect },
+  { dealer, isSelected, distanceKm, onSelect, lang },
   ref,
 ) {
   const [copied, setCopied] = useState(false);
+  const s = STRINGS[lang];
   const presentation = STATUS_PRESENTATION[dealer.status];
 
   const locality = [dealer.municipality, dealer.district].filter(Boolean).join(", ");
@@ -37,11 +40,11 @@ export const DealerCard = forwardRef<HTMLElement, Props>(function DealerCard(
     try {
       await navigator.clipboard.writeText(text);
       setCopied(true);
-      toast.success("Address copied");
+      toast.success(s.addressCopied);
       setTimeout(() => setCopied(false), 2000);
     } catch {
       // Clipboard is blocked on insecure origins and in some mobile webviews.
-      toast.error("Could not copy — long-press the address to select it.");
+      toast.error(s.copyFailed);
     }
   }
 
@@ -83,7 +86,7 @@ export const DealerCard = forwardRef<HTMLElement, Props>(function DealerCard(
             presentation.badge,
           )}
         >
-          {presentation.label}
+          {s.status[dealer.status]}
         </span>
       </div>
 
@@ -91,9 +94,7 @@ export const DealerCard = forwardRef<HTMLElement, Props>(function DealerCard(
         <span className="text-2xl font-bold tabular-nums leading-none">
           {dealer.stockQuantity}
         </span>
-        <span className="text-sm text-muted-foreground">
-          {dealer.stockQuantity === 1 ? "cylinder" : "cylinders"} today
-        </span>
+        <span className="text-sm text-muted-foreground">{s.cylindersToday(dealer.stockQuantity)}</span>
       </div>
 
       {dealer.address ? (
@@ -114,7 +115,7 @@ export const DealerCard = forwardRef<HTMLElement, Props>(function DealerCard(
             onClick={(e) => e.stopPropagation()}
           >
             <Phone className="size-3.5" aria-hidden />
-            Call
+            {s.call}
           </Button>
         ) : null}
 
@@ -132,7 +133,7 @@ export const DealerCard = forwardRef<HTMLElement, Props>(function DealerCard(
           onClick={(e) => e.stopPropagation()}
         >
           <Navigation className="size-3.5" aria-hidden />
-          Directions
+          {s.directions}
         </Button>
 
         <Button size="touch" variant="ghost" onClick={copyAddress}>
@@ -141,13 +142,13 @@ export const DealerCard = forwardRef<HTMLElement, Props>(function DealerCard(
           ) : (
             <Copy className="size-3.5" aria-hidden />
           )}
-          <span className="sr-only sm:not-sr-only">Copy</span>
+          <span className="sr-only sm:not-sr-only">{s.copy}</span>
         </Button>
       </div>
 
       <div className="mt-3 flex items-center justify-between border-t pt-2.5 text-xs text-muted-foreground">
         <span>
-          Updated <RelativeTime iso={dealer.updatedAt} />
+          {s.updated} <RelativeTime iso={dealer.updatedAt} locale={lang === "ne" ? "ne" : "en"} />
         </span>
         {distanceKm !== null ? (
           <span className="font-medium text-foreground">{formatDistance(distanceKm)}</span>

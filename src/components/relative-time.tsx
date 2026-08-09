@@ -13,12 +13,12 @@ import { relativeTime } from "@/lib/stock";
  * suppress flag accepts that the two legitimately differ, and the mount effect then
  * corrects the text to the reader's actual now.
  */
-export function RelativeTime({ iso }: { iso: string }) {
-  const [label, setLabel] = useState(() => relativeTime(iso));
+export function RelativeTime({ iso, locale = "en" }: { iso: string; locale?: string }) {
+  const [label, setLabel] = useState(() => relativeTime(iso, locale));
 
   useEffect(() => {
-    setLabel(relativeTime(iso));
-  }, [iso]);
+    setLabel(relativeTime(iso, locale));
+  }, [iso, locale]);
 
   return (
     <time dateTime={iso} suppressHydrationWarning>
