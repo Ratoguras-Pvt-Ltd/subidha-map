@@ -56,3 +56,8 @@ next-env.d.ts
 # Claude Code tooling state, not project source
 .claude/
 .claude-flow/
+
+.vercel
+.env*
+AGENTS.md
+CLAUDE.md
