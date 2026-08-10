@@ -88,10 +88,12 @@ function userIcon(): L.DivIcon {
 function ViewController({
   dealers,
   selectedId,
+  userLocation,
   sheetPeek,
 }: {
   dealers: PublicDealer[];
   selectedId: string | null;
+  userLocation: { lat: number; lng: number } | null;
   sheetPeek: number;
 }) {
   const map = useMap();
@@ -133,6 +135,18 @@ function ViewController({
     );
     map.flyTo(target, zoom, { duration: 0.6 });
   }, [selectedId, dealers, map, coveredPx]);
+
+  useEffect(() => {
+    if (!userLocation || selectedId) return;
+    const zoom = Math.max(map.getZoom(), 15);
+    const target = map.unproject(
+      map
+        .project([userLocation.lat, userLocation.lng], zoom)
+        .add(L.point(0, coveredPx() / 2)),
+      zoom,
+    );
+    map.flyTo(target, zoom, { duration: 0.6 });
+  }, [userLocation, selectedId, map, coveredPx]);
 
   return null;
 }
@@ -193,7 +207,12 @@ export default function DealerMap({
         <Marker position={[userLocation.lat, userLocation.lng]} icon={userIcon()} />
       ) : null}
 
-      <ViewController dealers={dealers} selectedId={selectedId} sheetPeek={sheetPeek} />
+      <ViewController
+        dealers={dealers}
+        selectedId={selectedId}
+        userLocation={userLocation}
+        sheetPeek={sheetPeek}
+      />
     </MapContainer>
   );
 }
