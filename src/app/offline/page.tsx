@@ -1,3 +1,5 @@
+import { BrandMark } from "@/components/brand-mark";
+
 export const metadata = {
   title: "You're offline",
 };
@@ -5,6 +7,7 @@ export const metadata = {
 export default function OfflinePage() {
   return (
     <div className="fixed inset-0 flex flex-col items-center justify-center gap-3 px-6 text-center">
+      <BrandMark className="size-14" />
       <h1 className="text-xl font-semibold">You&apos;re offline</h1>
       <p className="max-w-sm text-sm text-muted-foreground">
         Subidha Gas needs an internet connection to load dealer locations and stock. Reconnect
