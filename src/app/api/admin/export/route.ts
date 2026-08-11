@@ -1,6 +1,9 @@
 import { auth } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
 
+// Bound worst case: a hung DB read shouldn't hold the function open indefinitely.
+export const maxDuration = 15;
+
 const COLUMNS = [
   "dealer_name",
   "address",

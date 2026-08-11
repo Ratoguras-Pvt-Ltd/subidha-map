@@ -6,6 +6,8 @@ import { RESET_TIMEZONE, resetAllStock } from "@/lib/reset-stock";
 
 // Zeroing every dealer must never be served from a cache or prerendered.
 export const dynamic = "force-dynamic";
+// Bound worst case: a hung DB write shouldn't hold the function open indefinitely.
+export const maxDuration = 30;
 
 /**
  * Nightly stock reset, driven by the Vercel Cron entry in vercel.json
