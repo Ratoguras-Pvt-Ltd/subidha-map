@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useTransition } from "react";
+import dynamic from "next/dynamic";
 import { toast } from "sonner";
 
 import { Button } from "@/components/ui/button";
@@ -18,6 +19,16 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { dealerSchema } from "@/lib/validations";
 import { createDealer, updateDealer } from "../../actions";
+
+const LocationPicker = dynamic(() => import("@/components/map/location-picker"), {
+  ssr: false,
+  // Leaflet touches `window` at import time, so it can never be server-rendered.
+  loading: () => (
+    <div className="grid size-full place-items-center text-sm text-muted-foreground">
+      Loading map…
+    </div>
+  ),
+});
 
 export type DealerFormValues = {
   id: string;
@@ -46,6 +57,8 @@ export function DealerFormDialog({
   const [internalOpen, setInternalOpen] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [pending, startTransition] = useTransition();
+  const [latitude, setLatitude] = useState(dealer?.latitude?.toString() ?? "");
+  const [longitude, setLongitude] = useState(dealer?.longitude?.toString() ?? "");
 
   const isControlled = open !== undefined;
   const isOpen = isControlled ? open : internalOpen;
@@ -129,6 +142,23 @@ export function DealerFormDialog({
             <Input id="address" name="address" defaultValue={dealer?.address ?? ""} />
           </div>
 
+          <div className="space-y-2">
+            <Label>Location</Label>
+            <div className="h-56 overflow-hidden rounded-md border">
+              <LocationPicker
+                value={
+                  latitude && longitude
+                    ? { lat: Number(latitude), lng: Number(longitude) }
+                    : null
+                }
+                onChange={(lat, lng) => {
+                  setLatitude(lat.toFixed(6));
+                  setLongitude(lng.toFixed(6));
+                }}
+              />
+            </div>
+          </div>
+
           <div className="grid gap-4 sm:grid-cols-2">
             <div className="space-y-2">
               <Label htmlFor="latitude">Latitude *</Label>
@@ -138,7 +168,8 @@ export function DealerFormDialog({
                 type="number"
                 step="any"
                 required
-                defaultValue={dealer?.latitude ?? ""}
+                value={latitude}
+                onChange={(e) => setLatitude(e.target.value)}
                 placeholder="26.4525"
               />
             </div>
@@ -150,13 +181,15 @@ export function DealerFormDialog({
                 type="number"
                 step="any"
                 required
-                defaultValue={dealer?.longitude ?? ""}
+                value={longitude}
+                onChange={(e) => setLongitude(e.target.value)}
                 placeholder="87.2718"
               />
             </div>
           </div>
           <p className="-mt-2 text-xs text-muted-foreground">
-            Must fall inside Nepal. Copy from Google Maps by right-clicking the location.
+            Click or drag the pin on the map, or type coordinates directly. Must fall
+            inside Nepal.
           </p>
 
           <div className="grid gap-4 sm:grid-cols-2">
