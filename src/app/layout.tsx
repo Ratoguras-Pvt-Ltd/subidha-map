@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Outfit, Geist_Mono } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 
@@ -9,7 +9,7 @@ import { Toaster } from "@/components/ui/sonner";
 import "./globals.css";
 
 // globals.css maps --font-sans / --font-geist-mono in its @theme block.
-const geistSans = Geist({ variable: "--font-sans", subsets: ["latin"], display: "swap" });
+const sans = Outfit({ variable: "--font-sans", subsets: ["latin"], display: "swap" });
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
@@ -63,8 +63,8 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+    <html lang="en" suppressHydrationWarning className={`${sans.variable} ${geistMono.variable}`}>
+      <body className="antialiased">
         <ThemeProvider>
           {children}
           <Toaster richColors position="top-center" />
