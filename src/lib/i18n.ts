@@ -64,7 +64,7 @@ const en: Dict = {
     visible === total
       ? `${visible} dealer${visible === 1 ? "" : "s"} with stock today`
       : `${visible} of ${total} with stock today`,
-  cylindersToday: (n) => `${n === 1 ? "cylinder" : "cylinders"} today`,
+  cylindersToday: (n) => `${n === 1 ? "cylinder" : "cylinders"} delivered today`,
   updated: "Updated",
   call: "Call",
   directions: "Directions",
@@ -109,7 +109,7 @@ const ne: Dict = {
     visible === total
       ? `आज मौज्दात भएका ${visible} डिलर`
       : `${total} मध्ये ${visible} मौज्दातमा`,
-  cylindersToday: () => "आज सिलिन्डर",
+  cylindersToday: () => "आज डिलिवर भएको सिलिन्डर",
   updated: "अपडेट भयो",
   call: "कल गर्नुहोस्",
   directions: "दिशा",

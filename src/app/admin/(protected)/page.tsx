@@ -47,7 +47,7 @@ async function getStats() {
 
 const TILES = [
   { key: "totalDealers", label: "Total Dealers", icon: Store, tone: "" },
-  { key: "totalCylinders", label: "Cylinders Today", icon: Boxes, tone: "" },
+  { key: "totalCylinders", label: "Cylinders Delivered Today", icon: Boxes, tone: "" },
   { key: "inStock", label: "Dealers In Stock", icon: PackageCheck, tone: "text-green-600" },
   { key: "low", label: "Low Stock Dealers", icon: AlertTriangle, tone: "text-yellow-600" },
   { key: "out", label: "Out of Stock", icon: CircleOff, tone: "text-muted-foreground" },
